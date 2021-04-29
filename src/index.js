@@ -1,12 +1,13 @@
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Homepage from './Components/homePage';
 import Register from './Components/register'
+import Records from './Components/records'
 import './styles.css';
+
+
 const ipcRenderer=window.ipcRenderer
-console.log(ipcRenderer)
+// console.log(ipcRenderer)
 
 
-ReactDOM.render(<Register ipcRenderer={ipcRenderer}/>, document.getElementById('root'))
+ReactDOM.render(<Records ipcRenderer={ipcRenderer}/>, document.getElementById('root'))

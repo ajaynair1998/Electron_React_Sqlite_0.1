@@ -1,0 +1,70 @@
+import React,{Component} from 'react'
+
+class Records extends Component{
+    constructor(){
+        super()
+        this.state={}
+    }
+
+    render(){
+        return(
+            <div id='Records'>
+                <div id='navbar'>
+                <nav className="navbar">
+          <div className="navbar__container">
+            <a href="#home" id="navbar__logo">
+              Patient Database
+            </a>
+            <div className="navbar__toggle" id="mobile-menu">
+              <span className="bar"></span> <span class="bar"></span>
+              <span className="bar"></span>
+            </div>
+            <ul className="navbar__menu">
+              <li className="navbar__item">
+                <a href="#home" className="navbar__links" id="home-page">
+                  Home
+                </a>
+              </li>
+              <li className="navbar__item">
+                <a href="#about" className="navbar__links" id="about-page">
+                  Register
+                </a>
+              </li>
+              <li className="navbar__item">
+                <a
+                  href="#services"
+                  className="navbar__links"
+                  id="services-page"
+                >
+                  Records
+                </a>
+              </li>
+              <li className="navbar__btn">
+                <a href="#sign-up" className="button" id="signup">
+                  Sign Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+                </div>
+                <div id='controls_and_records'>
+                    <div id='controls'>
+
+                    </div>
+
+
+
+                    <div id='chart'>
+
+                    </div>
+
+                </div>
+
+            </div>
+        )
+    }
+}
+
+export default Records
