@@ -68,7 +68,33 @@ else{
 //recieving form-data
 ipcMain.on('form-data',(event,args)=>
 {
-  console.log(args)
+
+  //Seperating the keys and values since we get the jsonobject
+  let keys=Object.keys(args)
+  let values=Object.values(args)
+  let keys_in_double_quotes=keys.map(item =>{
+    return `"${item}"`
+  })
+  let values_in_double_quotes=values.map(item =>{
+    return `"${item}"`
+  })
+  
+  //sql query to add values into database
+  let query_to_insert=`INSERT INTO Patient_Data (${keys_in_double_quotes.toString()}) VALUES( ${values_in_double_quotes.toString()})`
+  console.log(query_to_insert)
+
+
+  //now adding these values into the sqlite database
+  database.all(query_to_insert,(err,rows)=>
+  {
+    if (err)
+      {console.log(err)}
+    else{
+      console.log('successfully inserted Patient Data')
+    }
+  })
+  
+  
 })
 
 
