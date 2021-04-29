@@ -22,7 +22,7 @@ class Register extends Component{
     componentDidMount(){
       
       //ipcRenderer testing
-      this.props.ipcRenderer.send('ping')
+      // this.props.ipcRenderer.send('ping')
       
 
       // setting time and date at the time of load
@@ -79,7 +79,15 @@ class Register extends Component{
       if(id=='Submit')
       {
         //if the button that was pressed is submit
-        console.log('send')
+
+        //confirm button
+        if(prompt()){
+          this.props.ipcRenderer.send('form-data',this.state)
+        }
+        else{
+          //do nothing
+        }
+       
       }
     }
     
@@ -174,8 +182,8 @@ class Register extends Component{
 
                     <div className='data_field'>
                         <label for='Patient_Name'>Patient Name:</label>
-                        <input id ='Patient_Name' type='text' onChange={this.handleChange} ></input>
-                        <p id='check'>asda</p>
+                        <input id ='Patient_Name' type='text' onChange={this.handleChange}></input>
+                        
                     </div>
 
                     <div className='data_field'>
@@ -316,5 +324,13 @@ class Register extends Component{
         )
     }
 }
+
+//prompt when submit is pressed
+function prompt(){
+  let temp=window.confirm('The form will be sumbitted, Check before continuing')
+  return temp
+}
+
+
 
 export default Register

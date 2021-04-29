@@ -37,8 +37,16 @@ app.on('activate', () => {
   }
 });
 
-//logic for sqlite
 
+//APPLICATION LOGIC AFTER THIS LINE
+// -------------------------------------------------------------------------
+
+
+
+
+
+
+//logic for ACCESSING sqlite
 let database
 if(isDev){
        database = new sqlite3.Database('./public/test.db', (err) => {
@@ -54,34 +62,68 @@ else{
 
 
 
-database.all('select * from testtable',(err,rows) =>{
-  console.log((err && err.message) || rows)
-   const notification = {
-    title: 'Basic Notification',
-    body: `${JSON.stringify(rows[0])}`
-  }
-  new Notification(notification).show()
 
-})
-ipcMain.on('ping',(event,args) =>{
-  console.log('got the message from react')
-})
+//ipc logic
 
-return new Promise ((resolve) =>
+//recieving form-data
+ipcMain.on('form-data',(event,args)=>
 {
-    setTimeout(()=>
-    {
-      new Notification({
-        title: 'starting up', body: `file://${__dirname}`
-      }).show()
-      
-       new Notification({
-         title: 'starting up', body: path.join(app.getAppPath(), '..', '..','resources', 'app.asar.unpacked', 'test.db')
-      }).show()
-
-
-    },5000)
+  console.log(args)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// accessing the sqlite database
+// database.all('select * from testtable',(err,rows) =>{
+//   console.log((err && err.message) || rows)
+//    const notification = {
+//     title: 'Basic Notification',
+//     body: `${JSON.stringify(rows[0])}`
+//   }
+//   new Notification(notification).show()
+
+// })
+
+
+
+
+//testing out ipcmain
+// ipcMain.on('ping',(event,args) =>{
+//   console.log('got the message from react')
+// })
+
+
+
+//getting current directory
+// return new Promise ((resolve) =>
+// {
+//     setTimeout(()=>
+//     {
+//       new Notification({
+//         title: 'starting up', body: `file://${__dirname}`
+//       }).show()
+      
+//        new Notification({
+//          title: 'starting up', body: path.join(app.getAppPath(), '..', '..','resources', 'app.asar.unpacked', 'test.db')
+//       }).show()
+
+
+//     },5000)
+// })
 
 
 
