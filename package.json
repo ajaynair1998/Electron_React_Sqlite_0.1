@@ -12,6 +12,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "sqlite3": "^5.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -21,7 +22,8 @@
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"SET BROWSER=none&&yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-pack": "electron-builder -w ",
-    "preelectron-pack": "yarn build"
+    "preelectron-pack": "yarn build",
+    "rebuild-sqlite3": "electron-rebuild -f -w sqlite3"
   },
   "eslintConfig": {
     "extends": [
@@ -45,16 +47,17 @@
     "concurrently": "^6.0.2",
     "electron": "^12.0.5",
     "electron-builder": "^22.10.5",
+    "electron-rebuild": "^2.3.5",
     "wait-on": "^5.3.0"
   },
   "build": {
-  "appId": "com.example.electron-cra",
-  "files": [
-    "build/**/*",
-    "node_modules/**/*"
-  ],
-  "directories":{
-    "buildResources": "assets"
+    "appId": "com.example.electron-cra",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
-}
 }
