@@ -5,9 +5,12 @@ import PatientCard from './patientCard'
 class Records extends Component{
     constructor(){
         super()
-        this.state={screen:'all',keyword:''}
+        this.state={screen:'all',keyword:'',loaded:'true'}
     }
 
+    
+    
+    
     //Recieve all the patients that have been registered from the database
     componentDidMount()
     {
@@ -16,16 +19,51 @@ class Records extends Component{
       window.ipcRenderer.send('give_patient_data')
 
 
+      
+      
+      
       // on recieving patient (id,name) from electron
       window.ipcRenderer.on('got_patient_data',(event,arg) =>
       {
-        console.log(arg)
+        //save our [array containing{Patient_id,Patient_Name}] to the state
+        this.setState(prevState=>
+          {
+            return {...prevState,data:arg}
+          })
+        
       })
+
     }
+
+    
+
+
+
+
 
     render(){
 
-      
+      let patientCardsToRender=()=>
+      {
+          //get the html cards into this variable so we can change the 
+          //portion according if screen is set to 'all','filter','byDate'
+
+
+          // if screen is set to show all patients
+          if(this.state.screen == 'all')
+          {
+
+            this.state.
+
+
+          }
+
+      }
+
+
+
+
+
 
 
         return(
