@@ -418,7 +418,6 @@
 
 
 #Records .navbar__container {
-  position: sticky;
   display: flex;
   justify-content: space-between;
   height: 80px;
