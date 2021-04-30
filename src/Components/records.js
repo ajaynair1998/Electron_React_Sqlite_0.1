@@ -6,7 +6,22 @@ class Records extends Component{
         this.state={}
     }
 
+    //Recieve all the patients that have been registered from the database
+    componentDidMount()
+    {
+      //on load
+      window.ipcRenderer.send('give_patient_data')
+      window.ipcRenderer.on('yep got it',(event,arg) =>
+      {
+        console.log('yeah yeah')
+      })
+    }
+
     render(){
+
+      
+
+
         return(
             <div id='Records'>
                 <div id='navbar'>
@@ -57,7 +72,14 @@ class Records extends Component{
 
 
                     <div id='chart'>
+                      <div className='patient'>
+                        <div className='name' ><h2>Ajay</h2></div>
+                        <div className='patient_id'><p>4323</p></div>
+                        <div className='patient_button'> <button>Edit</button></div>
+                        <div className='patient_button'> <button>View</button></div>
 
+                      </div>
+                                
                     </div>
 
                 </div>

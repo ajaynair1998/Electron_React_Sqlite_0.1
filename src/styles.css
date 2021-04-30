@@ -533,4 +533,23 @@
 
 #chart{
   grid-area:b;
+  margin-top: 70px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.patient{
+  width:90%;
+  height:40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap:100px;
+  color: #fff;
+  border-style: solid;
+  border-color: white;
+  border-radius: 8px;
+  border-width: 2px;
 }

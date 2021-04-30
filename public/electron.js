@@ -99,6 +99,17 @@ ipcMain.on('form-data',(event,args)=>
 
 
 
+//sending patient names and id to records page
+ipcMain.on('give_patient_data',(event,args)=>
+{
+  
+
+  //we have to send back the names and id of all patients
+  event.reply('yep got it')
+})
+
+
+
 
 
 

@@ -6,8 +6,8 @@ import Records from './Components/records'
 import './styles.css';
 
 
-const ipcRenderer=window.ipcRenderer
+// const ipcRenderer=window.ipcRenderer
 // console.log(ipcRenderer)
 
 
-ReactDOM.render(<Records ipcRenderer={ipcRenderer}/>, document.getElementById('root'))
+ReactDOM.render(<Records />, document.getElementById('root'))
