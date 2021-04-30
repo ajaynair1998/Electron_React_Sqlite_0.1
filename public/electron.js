@@ -65,6 +65,8 @@ else{
 
 //ipc logic
 
+// ---------------------------------  for register page    ----------------------------\
+
 //recieving form-data
 ipcMain.on('form-data',(event,args)=>
 {
@@ -97,12 +99,27 @@ ipcMain.on('form-data',(event,args)=>
   
 })
 
+// --------------------------------------------ending register page logic-----
+// --------------------------------------------    records page logic    ----
 
-
+ 
 //sending patient names and id to records page
 ipcMain.on('give_patient_data',(event,args)=>
 {
-  
+
+  let queryfor_id_name='SELECT Patient_id,Patient_Name from Patient_Data'
+
+  database.all(queryfor_id_name,(err,rows) =>
+  {
+    if(err)
+    {
+      console.log(err.message)
+    }
+    else
+    {
+      event.reply('got_patient_data',rows)
+    }
+  })
 
   //we have to send back the names and id of all patients
   event.reply('yep got it')

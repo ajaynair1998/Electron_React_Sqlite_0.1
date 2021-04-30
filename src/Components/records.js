@@ -1,19 +1,25 @@
 import React,{Component} from 'react'
 
+import PatientCard from './patientCard'
+
 class Records extends Component{
     constructor(){
         super()
-        this.state={}
+        this.state={screen:'all',keyword:''}
     }
 
     //Recieve all the patients that have been registered from the database
     componentDidMount()
     {
       //on load
+      // request main electron application for the patient (name and id)
       window.ipcRenderer.send('give_patient_data')
-      window.ipcRenderer.on('yep got it',(event,arg) =>
+
+
+      // on recieving patient (id,name) from electron
+      window.ipcRenderer.on('got_patient_data',(event,arg) =>
       {
-        console.log('yeah yeah')
+        console.log(arg)
       })
     }
 
