@@ -537,6 +537,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  gap:30px;
 }
 
 .patient{
@@ -552,4 +553,13 @@
   border-color: white;
   border-radius: 8px;
   border-width: 2px;
+  
 }
+
+.patient .name{
+  width:20%;
+}
+.patient .patient_id{
+  width:5%;
+}
+

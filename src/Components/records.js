@@ -5,7 +5,7 @@ import PatientCard from './patientCard'
 class Records extends Component{
     constructor(){
         super()
-        this.state={screen:'all',keyword:'',loaded:'true'}
+        this.state={screen:'all',keyword:'',loading:true}
     }
 
     
@@ -28,8 +28,9 @@ class Records extends Component{
         //save our [array containing{Patient_id,Patient_Name}] to the state
         this.setState(prevState=>
           {
-            return {...prevState,data:arg}
+            return {...prevState,data:arg,loading:false}
           })
+          console.log(this.state.data)
         
       })
 
@@ -44,19 +45,42 @@ class Records extends Component{
     render(){
 
       let patientCardsToRender=()=>
+      
       {
+
+        //make sure this is rendered after we get patient-data from electron
+        if(this.state.loading === false)
+        {
           //get the html cards into this variable so we can change the 
           //portion according if screen is set to 'all','filter','byDate'
 
 
           // if screen is set to show all patients
-          if(this.state.screen == 'all')
+          if(this.state.screen === 'all')
           {
-
-            this.state.
+            let tempForStorage=
+            this.state.data.map(item =>
+            {
+               
+                return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+              
+            })
+            console.log(tempForStorage)
+            return(
+              <div id='chart'>
+                    {tempForStorage}
+              </div>
+            )
+           
 
 
           }
+        }
+
+        else if(this.state.loading === true)
+        {
+          return []
+        }
 
       }
 
@@ -115,16 +139,12 @@ class Records extends Component{
 
 
 
-                    <div id='chart'>
-                      <div className='patient'>
-                        <div className='name' ><h2>Ajay</h2></div>
-                        <div className='patient_id'><p>4323</p></div>
-                        <div className='patient_button'> <button>Edit</button></div>
-                        <div className='patient_button'> <button>View</button></div>
-
-                      </div>
+                    
+                      {patientCardsToRender()}
+                      
+                      
                                 
-                    </div>
+                    
 
                 </div>
 

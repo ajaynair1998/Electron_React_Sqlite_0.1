@@ -117,6 +117,7 @@ ipcMain.on('give_patient_data',(event,args)=>
     }
     else
     {
+      rows=rows.map(item => [item.Patient_id,item.Patient_Name])
       event.reply('got_patient_data',rows)
     }
   })
