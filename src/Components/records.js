@@ -7,7 +7,8 @@ const date= new Date();
 class Records extends Component{
     constructor(){
         super()
-        this.state={screen:'today',keyword:'',loading:true}
+        this.state={screen:'bykeyword',keyword:'ajay',loading:true}
+        this.handleClick=this.handleClick.bind(this)
     }
 
     
@@ -36,6 +37,34 @@ class Records extends Component{
         
       })
 
+    }
+    //to change screen type on button click (all,today,bykeyword)
+    handleClick(event){
+        // display all patients
+        if(event.target.id === 'all')
+        {
+            this.setState(prevState =>
+              {
+                return {...prevState,screen:'all'}
+              })
+        }
+
+        //display today's patient records
+        else if(event.target.id === 'today')
+        {
+            this.setState(prevState =>
+              {
+                return {...prevState,screen:'today'}
+              })
+        }
+
+        else if(event.target.id === 'search')
+        {
+            this.setState(prevState =>
+              {
+                return {...prevState,screen:'bykeyword'}
+              })
+        }
     }
 
     
@@ -112,10 +141,34 @@ class Records extends Component{
 
           }
 
-          else if(this.state.screen === 'byname')
+          else if(this.state.screen === 'bykeyword')
           {
-            // search by id or name
-            
+            let tempForStorage = this.state.data.map(item =>
+              {
+                //get the keyword from state and compare with id and name if it matches
+                let keyword=new RegExp(`${this.state.keyword}`)
+                console.log(keyword)
+                
+                
+                //check using regex
+                
+                if ( keyword.test(item[1] ? item[1] :'empty' ) || (item[0].toString().match(keyword)) )
+                {
+                  return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+                }
+                else
+                {
+                  //leave the record
+                }
+              })
+
+              return(
+                <div id='chart'>
+                      {tempForStorage}
+                </div>
+              )
+
+
           }
           
 
@@ -178,7 +231,20 @@ class Records extends Component{
                 </div>
                 <div id='controls_and_records'>
                     <div id='controls'>
+                      {/* buttons for different type of displays -(all,today,keyword) */}
+                      <div id='screen'>
+                        <button id='all' onClick={this.handleClick}> All</button>
+                        <button id ='today' onClick={this.handleClick}>Today's</button>
+                        <button id= 'search' onClick={this.handleClick}>Search</button>
 
+                      </div>
+                      {/* search by id or name */}
+                      <div id='keyword'>
+                      <input  placeholder='Search'></input>
+                      </div>
+                      <div>
+
+                      </div>
                     </div>
 
 

@@ -563,3 +563,45 @@
   width:5%;
 }
 
+#Records #controls{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 80px;
+
+
+
+}
+
+#Records #controls #screen{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:25px;
+
+}
+
+
+#Records #controls #keyword{
+  margin-top: 30px;
+}
+
+#Records #controls #screen button{
+  width:30%;
+  padding:5px;
+}
+
+#Records #controls #screen #all{
+  padding:5px 20px;
+}
+
+
+#Records #controls input{
+  height:45px;
+  padding:20px;
+  border-radius: 5px;
+}
+
+
