@@ -9,6 +9,7 @@ class Records extends Component{
         super()
         this.state={screen:'bykeyword',keyword:'ajay',loading:true}
         this.handleClick=this.handleClick.bind(this)
+        this.handleChange=this.handleChange.bind(this)
     }
 
     
@@ -38,6 +39,8 @@ class Records extends Component{
       })
 
     }
+
+
     //to change screen type on button click (all,today,bykeyword)
     handleClick(event){
         // display all patients
@@ -65,6 +68,21 @@ class Records extends Component{
                 return {...prevState,screen:'bykeyword'}
               })
         }
+    }
+
+
+    //to change keyword parameter on typing in search parameter
+    handleChange(event)
+    {
+      if(event.target.id =='keywordinput')
+      {
+        //when keyword input is changed
+        this.setState(prevState =>
+          {
+            return {...prevState,keyword:event.target.value}
+          })
+      }
+
     }
 
     
@@ -240,7 +258,7 @@ class Records extends Component{
                       </div>
                       {/* search by id or name */}
                       <div id='keyword'>
-                      <input  placeholder='Search'></input>
+                      <input  placeholder='Search' id='keywordinput' onChange={this.handleChange}></input>
                       </div>
                       <div>
 
