@@ -107,7 +107,7 @@ ipcMain.on('form-data',(event,args)=>
 ipcMain.on('give_patient_data',(event,args)=>
 {
 
-  let queryfor_id_name='SELECT Patient_id,Patient_Name from Patient_Data'
+  let queryfor_id_name='SELECT Patient_id,Patient_Name,Date from Patient_Data'
 
   database.all(queryfor_id_name,(err,rows) =>
   {
@@ -117,7 +117,7 @@ ipcMain.on('give_patient_data',(event,args)=>
     }
     else
     {
-      rows=rows.map(item => [item.Patient_id,item.Patient_Name])
+      rows=rows.map(item => [item.Patient_id,item.Patient_Name,item.Date])
       event.reply('got_patient_data',rows)
     }
   })

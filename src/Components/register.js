@@ -6,8 +6,8 @@ const date=new Date
 
 class Register extends Component{
 
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         //setting the default values as states early in advance
         this.state={'Nationality':'India','Gender':'Not Selected',"Marital_Status":'Not Selected',
         'Blood_Group':'Not Selected','Doctor_Name':'Dr Arun Babu','Purpose':'Consultation'}
@@ -82,7 +82,7 @@ class Register extends Component{
 
         //confirm button
         if(prompt()){
-          this.props.ipcRenderer.send('form-data',this.state)
+          window.ipcRenderer.send('form-data',this.state)
          
         }
         else{

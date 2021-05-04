@@ -2,10 +2,12 @@ import React,{Component} from 'react'
 
 import PatientCard from './patientCard'
 
+const date= new Date();
+
 class Records extends Component{
     constructor(){
         super()
-        this.state={screen:'all',keyword:'',loading:true}
+        this.state={screen:'today',keyword:'',loading:true}
     }
 
     
@@ -75,11 +77,53 @@ class Records extends Component{
 
 
           }
+
+          // if screen is set to only show todays patients
+          else if(this.state.screen==='today')
+          {
+                //getting date so we can compare with the dates in records to get todays records
+                let todaysDate=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
+                console.log(todaysDate)
+                let tempForStorage=this.state.data.map(item =>
+                  {
+                    if(item[2]===`${todaysDate}`)
+                    {
+                      //if date field in each record equal to todays date we will return it to our temporary variable
+                      // to render it later
+                      console.log(item)
+                      return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+
+                    }
+
+                    else{
+                      // else then leave that record
+                    }
+                  })
+                  
+                  // then render that selected records in charts 
+                  return(
+                    <div id='chart'>
+                          {tempForStorage}
+                    </div>
+                  )
+
+
+            
+
+          }
+
+          else if(this.state.screen === 'byname')
+          {
+            // search by id or name
+            
+          }
+          
+
         }
 
         else if(this.state.loading === true)
         {
-          return []
+          return null
         }
 
       }
