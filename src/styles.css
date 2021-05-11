@@ -512,7 +512,7 @@
 }
 
 
-#controls_and_records {
+#Records #controls_and_records {
   position:fixed;
   top:8vh;
   background:#000;
@@ -528,14 +528,14 @@
   'a b b b b b';
 }
 
-#controls{
+#Records #controls{
   background:#000;
   background:linear-gradient(to right,#000,rgb(37, 36, 36));
   grid-area: a;
 
 }
 
-#chart{
+#Records #chart{
   grid-area:b;
   margin-top: 70px;
   display:flex;
@@ -544,7 +544,7 @@
   gap:30px;
 }
 
-.patient{
+#Records .patient{
   width:90%;
   height:40px;
   display: flex;
@@ -560,11 +560,15 @@
   
 }
 
-.patient .name{
+#Records .patient .name{
   width:20%;
 }
-.patient .patient_id{
+#Records .patient .patient_id{
   width:5%;
+}
+
+#chart .patient .patient_button button{
+  padding:5px;
 }
 
 #Records #controls{
