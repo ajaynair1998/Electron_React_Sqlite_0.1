@@ -1,15 +1,41 @@
+import React,{Component} from 'react'
+import { BrowserRouter as Router, Route, Link, browserHistory, IndexRoute ,Switch } from 'react-router-dom'
 
-import React from 'react';
 
 
-export default function App() {
 
-  return (
-    <>
-      <h1>I am App Component!!!</h1>
-      <button onClick={() => {
-        electron.notificationApi.sendNotification('My custom notification!');
-      }}>Notify</button>
-    </>
-  )
+//import all the pages
+import Homepage from './Components/homePage';
+import Register from './Components/register'
+import Records from './Components/records'
+import ViewPage from './Components/viewPage'
+import './styles.css';
+import './stylesViewPage.css'
+
+
+// Using this page to route between different pages
+
+
+class App extends Component{
+  constructor(){
+    super()
+    this.state={}
+  }
+
+
+  render()
+  {
+    return(
+      <Router>
+      <Switch>
+         <Route exact path = "/" component = {Homepage} />
+         <Route exact path = "/Register" component = {Register} />
+         <Route exact path = "/Records" component = {Records} />
+         <Route exact path = "/ViewPage" component = {ViewPage} />
+      </Switch>
+      </Router>
+    )
+  }
 }
+
+export default App

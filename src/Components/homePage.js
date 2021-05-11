@@ -20,26 +20,26 @@ class Homepage extends Component {
             </div>
             <ul className="navbar__menu">
               <li className="navbar__item">
-                <a href="#home" className="navbar__links" id="home-page">
+                <a href="/" className="navbar__links" id="home-page" >
                   Home
                 </a>
               </li>
               <li className="navbar__item">
-                <a href="#about" className="navbar__links" id="about-page">
+                <a href="/Register" className="navbar__links" id="about-page">
                   Register
                 </a>
               </li>
               <li className="navbar__item">
                 <a
-                  href="#services"
+                  href="/Records"
                   className="navbar__links"
                   id="services-page"
                 >
-                  Chart
+                  Records
                 </a>
               </li>
               <li className="navbar__btn">
-                <a href="#sign-up" className="button" id="signup">
+                <a href="/" className="button" id="signup">
                   Sign Out
                 </a>
               </li>
@@ -51,21 +51,17 @@ class Homepage extends Component {
           <div id="options">
             <ul>
               <li className="option_links">
-                <a href="#sign-up" className="button" id="signup">
+                <a href="/Register" className="button" id="signup">
                   Register New Patient
                 </a>
               </li>
 
               <li className="option_links">
-                <a href="#sign-up" className="button" id="signup">
-                  Today's Chart
+                <a href="/Records" className="button" id="signup">
+                  Records
                 </a>
               </li>
-              <li className="option_links">
-                <a href="#sign-up" className="button" id="signup">
-                  Search
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>

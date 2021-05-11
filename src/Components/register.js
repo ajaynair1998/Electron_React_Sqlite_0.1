@@ -103,7 +103,7 @@ class Register extends Component{
             <div id="Register">
         <nav className="navbar">
           <div className="navbar__container">
-            <a href="#home" id="navbar__logo">
+            <a href="/" id="navbar__logo">
               Patient Database
             </a>
             <div className="navbar__toggle" id="mobile-menu">
@@ -112,18 +112,18 @@ class Register extends Component{
             </div>
             <ul className="navbar__menu">
               <li className="navbar__item">
-                <a href="#home" className="navbar__links" id="home-page">
+                <a href="/" className="navbar__links" id="home-page">
                   Home
                 </a>
               </li>
               <li className="navbar__item">
-                <a href="#about" className="navbar__links" id="about-page">
+                <a href="/Register" className="navbar__links" id="about-page">
                   Register
                 </a>
               </li>
               <li className="navbar__item">
                 <a
-                  href="#services"
+                  href="/Records"
                   className="navbar__links"
                   id="services-page"
                 >
