@@ -1,0 +1,1209 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: "Kumbh Sans", sans-serif;
+    scroll-behavior: smooth;
+}
+
+#view #controls{
+    background-color: #131313;
+    padding: 30px;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    color: white;
+    
+    
+}
+
+#view #controls h2:hover{
+    color: rgb(200, 81, 81);
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    
+}
+
+#view #controls #save_button{
+    padding:9px;
+    border-radius: 5px;
+    background-image: linear-gradient(to top,rgb(48, 224, 48),rgb(0, 245, 53))
+}
+
+#view #main{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    height:4200px;
+    background-image: linear-gradient(to right, rgb(44, 42, 42), rgb(66, 63, 63));
+    color: white;
+}
+
+#view #contents #main .label{
+    width: 200px;
+}
+
+
+
+#view .navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+  
+  #view .navbar {
+    background: #131313;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  #view #navbar__logo {
+    background-color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  
+  #view .navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+  
+  #view .navbar__item {
+    height: 80px;
+  }
+  
+  #view .navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  #view .navbar__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+  }
+  
+  #view .navbar__links:hover {
+    color: #9518fc;
+    transition: all 0.3s ease;
+  }
+  
+  #view .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+
+
+
+/* chief complaints section */
+/* --------------------------------------- */
+
+
+
+
+
+
+#view #chief_complaint{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+    margin-top: 10px;
+}
+
+#view #chief_complaint .dataarea{
+
+    height:300px;
+    border-style: solid;
+    flex-grow: 1;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+
+}
+
+#view #chief_complaint .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #chief_complaint .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+#view #chief_complaint .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-grow: 0.9;
+}
+
+#view #chief_complaint .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #chief_complaint .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #chief_complaint .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #chief_complaint .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+#view #chief_complaint .dataarea .single_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    max-width: 25%;
+    
+}
+
+
+#view #chief_complaint .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #chief_complaint .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+/* ---chief complaints Done------- */
+
+
+
+
+
+/* past medical history section */
+
+
+#view #past_medical_history{
+    display: flex;
+    flex-direction: row;
+    margin: 0 70px;
+    max-width: 90%;
+    /* gap:30px; */
+    /* background-color: beige; */
+    height:150px;
+}
+
+#view #past_medical_history .label{
+    align-self: flex-start;
+
+
+}
+#view #past_medical_history .dataarea{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 10px;
+    width: 60%;
+    height: 150px;
+    
+}
+#view #past_medical_history .dataarea textarea{
+    width:100%;
+    height:100px;
+    align-self: flex-start;
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+
+/* past medical history done */
+/* ----------------- */
+
+
+
+
+/* Past Dental History */
+
+
+
+#view #past_dental_history{
+    display: flex;
+    flex-direction: row;
+    margin: 0 70px;
+    max-width: 90%;
+    /* gap:30px; */
+    /* background-color: beige; */
+    height:150px;
+}
+
+#view #past_dental_history .label{
+    align-self: flex-start;
+
+}
+#view #past_dental_history .dataarea{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 10px;
+    width: 60%;
+    height: 150px;
+    
+}
+#view #past_dental_history .dataarea textarea{
+    width:100%;
+    height:100px;
+    align-self: flex-start;
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+
+
+/* past dental history done */
+
+
+
+
+/* drug allergy section */
+
+#view #drug_allergy{
+    /* background-color: #a54d4d; */
+    display: flex;
+    flex-direction: row;
+    margin:0 70px;
+    max-width: 90%;
+}
+
+#view #drug_allergy .dataarea{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 60%;
+
+}
+
+#view #drug_allergy .label{
+    align-self: flex-start;
+}
+
+#view #drug_allergy .buttons{
+   align-self: flex-start;
+
+
+}
+#view #drug_allergy .buttons :nth-child(1){
+    color: rgb(18, 116, 47);
+}
+
+#view #drug_allergy .buttons :nth-child(2){
+    color: rgb(128, 20, 20);
+}
+
+#view #drug_allergy .dataarea #drug_allergy_input{
+    
+    
+    height: 100px;
+    border-radius: 6px;
+    padding: 5px;
+    width:100%;
+
+}
+
+#view #drug_allergy .dataarea .drug_allergy_input{
+    width:100%;
+
+}
+
+
+
+/* drug allergy section completed---- */
+
+
+/* starting General Examination Section */
+
+#view #general_examination{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+}
+
+#view #general_examination .dataarea{
+    display: flex;
+    flex-direction: column;
+    align-self: left;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    /* background-color: rgb(209, 175, 214); */
+    width:60%;
+    height:300px;
+    padding:20px;
+    gap:30px;
+}
+
+#view #general_examination .dataarea .labels{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background-color: saddlebrown; */
+
+    
+   
+}
+
+
+#view #general_examination .dataarea .labels p{
+    align-self: start;
+    width:25%;
+
+
+}
+
+
+#view #general_examination .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background-color: royalblue; */
+    /* gap: 10%; */
+
+}
+
+#view #general_examination .dataarea .single_entry p{
+    width:25%;
+    align-self: start;
+}
+
+#view #general_examination .single_input{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: rosybrown; */
+    gap: 5px;
+    
+
+    
+}
+
+
+
+#view #general_examination .single_input div{
+
+    display:block;
+    width: 20%;
+    align-self: center;
+   
+
+    
+}
+
+#view #general_examination .single_input div input,button{
+    min-width: 0;
+    max-width: 80px;
+}
+
+ 
+
+
+/* General Examination styling done */
+
+
+
+/* Starting Local Examination Styling */
+
+#view #local_examination{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+}
+
+#view #local_examination .dataarea{
+
+    height:300px;
+    border-style: solid;
+    flex-grow: 1;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+
+}
+
+#view #local_examination .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #local_examination .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+#view #local_examination .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-grow: 0.9;
+}
+
+#view #local_examination .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #local_examination .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #local_examination .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #local_examination .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+#view #local_examination .dataarea .single_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    max-width: 25%;
+    
+}
+
+
+#view #local_examination .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #local_examination .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+/* Local examination  styling done */
+
+
+
+
+/* Starting Clinical Diagnosis Styling */
+
+
+
+#view #clinical_diagnosis{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+
+}
+
+#view #clinical_diagnosis .dataarea{
+
+    height:300px;
+    border-style: solid;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 0.8;
+
+
+}
+
+#view #clinical_diagnosis .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #clinical_diagnosis .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+#view #clinical_diagnosis .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+#view #clinical_diagnosis .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #clinical_diagnosis .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #clinical_diagnosis .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #clinical_diagnosis .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+
+
+#view #clinical_diagnosis .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #clinical_diagnosis .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+/* Clinical diagnosis styling Done */
+
+
+
+
+
+/* starting investigation section*/
+
+
+#view #investigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+
+}
+
+#view #investigation .dataarea{
+
+    height:300px;
+    border-style: solid;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 0.8;
+
+
+}
+
+#view #investigation .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #investigation .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+#view #investigation .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+#view #investigation .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #investigation .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #investigation .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #investigation .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+
+
+#view #investigation .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #investigation .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+/* Investigation Done */
+
+/* starting Diagnosis */
+
+
+
+
+
+
+#view #diagnosis{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+
+}
+
+#view #diagnosis .dataarea{
+
+    height:300px;
+    border-style: solid;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 0.8;
+
+
+}
+
+#view #diagnosis .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #diagnosis .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+#view #diagnosis .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+
+#view #diagnosis .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #diagnosis .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #diagnosis .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #diagnosis .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+
+#view #diagnosis .dataarea .single_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    max-width: 25%;
+}
+
+#view #diagnosis .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #diagnosis .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+/* Diagnosis Done */
+
+
+/* Starting Treatment and Treatment Plan */
+
+
+#view #treatment_plan{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+}
+
+#view #treatment_plan .dataarea{
+
+    height:300px;
+    border-style: solid;
+    flex-grow: 1;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+
+}
+
+#view #treatment_plan .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+}
+#view #treatment_plan .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+#view #treatment_plan .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-grow: 0.7;
+}
+
+#view #treatment_plan .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #treatment_plan .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #treatment_plan .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 10px;
+}
+#view #treatment_plan .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: space-between;
+
+}
+#view #treatment_plan .dataarea .single_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    max-width: 25%;
+    
+}
+
+
+#view #treatment_plan .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #treatment_plan .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+/* treatment plan Done */
+
+
+
+
+/* starting Medicines */
+
+#view #medicine{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+
+}
+
+#view #medicine .dataarea{
+
+    height:300px;
+    border-style: solid;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 0.8;
+
+
+}
+
+#view #medicine .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #medicine .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+#view #medicine .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+#view #medicine .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #medicine .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #medicine .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #medicine .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+
+
+#view #medicine .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #medicine .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* medcine styling Done */
+
+/* Follow Up Section */
+
+
+#view #diagnosis{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* background-color: rgb(209, 175, 214); */
+    max-width: 90%;
+    margin:0 70px;
+
+}
+
+#view #diagnosis .dataarea{
+
+    height:300px;
+    border-style: solid;
+    padding:20px;
+    border-width: 1px;
+    border-radius: 6px;
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 0.8;
+
+
+}
+
+#view #diagnosis .dataarea .input_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #diagnosis .dataarea .input_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+#view #diagnosis .dataarea .input_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+
+#view #diagnosis .dataarea .input_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #diagnosis .dataarea .input_entry .add_button{
+    display: flex;
+    align-items: center;
+}
+
+
+#view #diagnosis .dataarea .single_entry{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 5px;
+}
+#view #diagnosis .dataarea .single_entry .labels{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    justify-content: center;
+
+}
+
+#view #diagnosis .dataarea .single_entry .input_rows{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    max-width: 25%;
+}
+
+#view #diagnosis .dataarea .single_entry .date{
+    display: flex;
+    align-items: center;
+}
+
+#view #diagnosis .dataarea .single_entry .delete_button{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
