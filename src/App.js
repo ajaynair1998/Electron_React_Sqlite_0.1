@@ -31,7 +31,7 @@ class App extends Component{
          <Route exact path = "/" component = {Homepage} />
          <Route exact path = "/Register" component = {Register} />
          <Route exact path = "/Records" component = {Records} />
-         <Route exact path = "/ViewPage" component = {ViewPage} />
+         <Route exact path = "/ViewPage/:patientId" component = {ViewPage} />
       </Switch>
       </Router>
     )

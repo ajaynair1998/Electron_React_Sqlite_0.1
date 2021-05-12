@@ -7,7 +7,7 @@ const date= new Date();
 class Records extends Component{
     constructor(){
         super()
-        this.state={screen:'bykeyword',keyword:'ajay',loading:true}
+        this.state={screen:'all',keyword:'',loading:true}
 
         
         this.handleClick=this.handleClick.bind(this)
@@ -96,6 +96,7 @@ class Records extends Component{
       //this function is passed to view button to fire when clicked to get the id when pressed
 
       console.log(id)
+      window.location.href=`/viewPage/${id}`
     }
     
 

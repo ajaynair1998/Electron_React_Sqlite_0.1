@@ -129,6 +129,13 @@ ipcMain.on('give_patient_data',(event,args)=>
 
 
 
+// sending the current patient details to View Page Of the Patient
+
+
+
+
+
+
 
 
 

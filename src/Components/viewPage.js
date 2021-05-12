@@ -1,9 +1,20 @@
 import React,{Component} from 'react'
 
 class ViewPage extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={}
+
+    }
+
+    // will fire when trying to load
+    componentDidMount()
+    {
+
+        // getting the patient id from the records page
+        const {patientId} =this.props.match.params
+        console.log(patientId)
+
 
     }
 
@@ -16,7 +27,7 @@ class ViewPage extends Component{
      <div id='navbar'>
             <nav className="navbar">
       <div className="navbar__container">
-        <a href="#home" id="navbar__logo">
+        <a href="/" id="navbar__logo">
           Patient Database
         </a>
         <div className="navbar__toggle" id="mobile-menu">
@@ -25,18 +36,18 @@ class ViewPage extends Component{
         </div>
         <ul className="navbar__menu">
           <li className="navbar__item">
-            <a href="#home" className="navbar__links" id="home-page">
+            <a href="/" className="navbar__links" id="home-page">
               Home
             </a>
           </li>
           <li className="navbar__item">
-            <a href="#about" className="navbar__links" id="about-page">
+            <a href="/Register" className="navbar__links" id="about-page">
               Register
             </a>
           </li>
           <li className="navbar__item">
             <a
-              href="#services"
+              href="/Records"
               className="navbar__links"
               id="services-page"
             >
