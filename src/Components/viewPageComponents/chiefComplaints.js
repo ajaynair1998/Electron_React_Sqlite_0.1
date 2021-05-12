@@ -21,8 +21,8 @@ function ChiefComplaint(props)
 
                             </div>
                             <div className="delete_button">
-                                <button  className={props.key} onClick={() =>
-                                props.handleClickChiefComplaint()}>Delete</button>
+                                <button  id='delete_button_chief_complaint' className={props.key} onClick={
+                                props.handleClickChiefComplaint}>Delete</button>
 
                             </div>
                             <div>

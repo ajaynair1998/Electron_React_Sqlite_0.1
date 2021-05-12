@@ -183,6 +183,11 @@ class ViewPage extends Component{
 
 
         }
+
+        else if(event.target.id === 'delete_button_chief_complaint')
+        {
+            console.log('delete pressed')
+        }
     }
 
 
