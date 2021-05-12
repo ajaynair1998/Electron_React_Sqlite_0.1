@@ -3,7 +3,39 @@ import React,{Component} from 'react'
 class ViewPage extends Component{
     constructor(props){
         super(props)
-        this.state={}
+
+        //Referance of all the data that will be recieved from electron for future Referance
+        this.state={
+            "Date": null,
+            "Time": null,
+            "avatar": null,
+            "Patient_id": 2,
+            "Patient_Name": null,
+            "Nationality": null,
+            "Age": null,
+            "DOB": null,
+            "Gender": null,
+            "Address": null,
+            "Blood_Group": null,
+            "Phone_Number": null,
+            "Mobile_Number": null,
+            "Email": null,
+            "Marital_Status": null,
+            "Occupation": null,
+            "Doctor_Name": null,
+            "Purpose": null,
+            "Reffered_By": null,
+            "Chief_Complaint": null,
+            "Past_Medical_History": null,
+            "Past_Dental_History": null,
+            "Drug_Allergy": null,
+            "General_Examination": null,
+            "Local_Examination": null,
+            "Clinical_Diagnosis": null,
+            "Investigation": null,
+            "Treatment_Plan": null,
+            "Medicines": null
+        }
 
     }
 
@@ -13,7 +45,22 @@ class ViewPage extends Component{
 
         // getting the patient id from the records page
         const {patientId} =this.props.match.params
-        console.log(patientId)
+        
+        // sending this id to electron so that electron can send back the viewPage Profile Data 
+        // for the Patient
+        window.ipcRenderer.send('View-Page-Data',patientId)
+
+
+        // on Recieving the ProfileData
+        window.ipcRenderer.on('Data-From-Electron',(event,args) =>
+        {
+            this.setState(prevState =>
+                {
+                    return args[0]
+                })
+                console.log(this.state)    
+        })
+        
 
 
     }

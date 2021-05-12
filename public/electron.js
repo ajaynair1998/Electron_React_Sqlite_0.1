@@ -127,9 +127,35 @@ ipcMain.on('give_patient_data',(event,args)=>
 })
 
 
+// Ending Records Page Logic ----------------------------------------------
 
+
+
+// starting View Page Logic  ----------------------------------------------
 
 // sending the current patient details to View Page Of the Patient
+
+ipcMain.on('View-Page-Data',(event,args) =>
+{
+  let Patient_id=args
+
+  //sql query for getting the row
+  let getProfileDataSql=`SELECT * from Patient_Data WHERE Patient_id=${Patient_id}`
+
+  database.all(getProfileDataSql,(err,row) =>
+  {
+    if(err)
+    {
+      console.log(err.message)
+    }
+    else{
+
+
+      // send the View Page Data to React
+      event.reply('Data-From-Electron',row)
+    }
+  })
+})
 
 
 
