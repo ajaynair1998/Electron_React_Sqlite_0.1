@@ -8,8 +8,11 @@ class Records extends Component{
     constructor(){
         super()
         this.state={screen:'bykeyword',keyword:'ajay',loading:true}
+
+        
         this.handleClick=this.handleClick.bind(this)
         this.handleChange=this.handleChange.bind(this)
+        this.handleClickViewButton=this.handleClickViewButton.bind(this)
     }
 
     
@@ -68,6 +71,8 @@ class Records extends Component{
                 return {...prevState,screen:'bykeyword'}
               })
         }
+
+        
     }
 
 
@@ -85,6 +90,13 @@ class Records extends Component{
 
     }
 
+
+    handleClickViewButton(id)
+    {
+      //this function is passed to view button to fire when clicked to get the id when pressed
+
+      console.log(id)
+    }
     
 
 
@@ -111,7 +123,7 @@ class Records extends Component{
             this.state.data.map(item =>
             {
                
-                return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+              return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} handleClickViewButton={this.handleClickViewButton} />)
               
             })
             console.log(tempForStorage)
@@ -138,7 +150,7 @@ class Records extends Component{
                       //if date field in each record equal to todays date we will return it to our temporary variable
                       // to render it later
                       console.log(item)
-                      return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+                      return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]}  handleClickViewButton={this.handleClickViewButton}/>)
 
                     }
 
@@ -172,7 +184,7 @@ class Records extends Component{
                 
                 if ( keyword.test(item[1] ? item[1] :'empty' ) || (item[0].toString().match(keyword)) )
                 {
-                  return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} />)
+                  return (< PatientCard patientName={item[1]} patientId={item[0]} key={item[0]} handleClickViewButton={this.handleClickViewButton}/>)
                 }
                 else
                 {
