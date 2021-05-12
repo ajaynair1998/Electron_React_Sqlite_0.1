@@ -5,26 +5,10 @@ class ViewPage extends Component{
         super(props)
 
         //Referance of all the data that will be recieved from electron for future Referance
-        this.state={
-            "Date": null,
-            "Time": null,
-            "avatar": null,
-            "Patient_id": 2,
+        this.state={loading:true,
+                    data:{
+            "Patient_id": null,
             "Patient_Name": null,
-            "Nationality": null,
-            "Age": null,
-            "DOB": null,
-            "Gender": null,
-            "Address": null,
-            "Blood_Group": null,
-            "Phone_Number": null,
-            "Mobile_Number": null,
-            "Email": null,
-            "Marital_Status": null,
-            "Occupation": null,
-            "Doctor_Name": null,
-            "Purpose": null,
-            "Reffered_By": null,
             "Chief_Complaint": null,
             "Past_Medical_History": null,
             "Past_Dental_History": null,
@@ -34,8 +18,15 @@ class ViewPage extends Component{
             "Clinical_Diagnosis": null,
             "Investigation": null,
             "Treatment_Plan": null,
-            "Medicines": null
+            "Medicines": null,
+            "Diagnosis":null,
+            "Follow_Up":null
         }
+    }
+
+
+        //functions custom
+        this.handleClick=this.handleClick.bind(this)
 
     }
 
@@ -56,10 +47,18 @@ class ViewPage extends Component{
         {
             this.setState(prevState =>
                 {
-                    return args[0]
+                    return {loading:false,data:args[0]}
                 })
-                console.log(this.state)    
+                  
         })
+        
+
+
+    }
+
+    handleClick(event){
+        // show state when GoTo is pressed for Devolopment
+        if(event.target.id ==='GoToButton') console.log(this.state)
         
 
 
@@ -68,6 +67,23 @@ class ViewPage extends Component{
 
     render()
     {
+        //function to render each Components
+
+        //chief Complaint Component rendering Section
+        let ChiefComplaints=() =>
+        {
+
+        }
+
+
+
+
+
+
+
+
+
+        //the html content
         return(
 
     <div id='view'>
@@ -114,7 +130,7 @@ class ViewPage extends Component{
         <div id='contents'>
             <div id='controls'>
                 
-                    <h2> Go To </h2>
+                    <h2 onClick={this.handleClick} id='GoToButton'> Go To </h2>
                 
                 
                     <h2 id='save_button'>Save</h2>
@@ -173,7 +189,7 @@ class ViewPage extends Component{
 
                             </div>
                             <div className="delete_button">
-                                <button className='delete_button_local_examination'>Delete</button>
+                                <button className='delete_button_chief_complaint'>Delete</button>
 
                             </div>
                             <div>
