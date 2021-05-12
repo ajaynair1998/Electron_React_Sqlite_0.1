@@ -2,6 +2,7 @@ import React from 'react'
 
 function ChiefComplaint(props)
 {
+    
     return (
         <div className='single_entry'>
                             <div className='labels'>
@@ -20,15 +21,19 @@ function ChiefComplaint(props)
 
                             </div>
                             <div className="delete_button">
-                                <button className='delete_button_chief_complaint'>Delete</button>
+                                <button  className={props.key} onClick={() =>
+                                props.handleClickChiefComplaint()}>Delete</button>
 
                             </div>
                             <div>
 
                             </div>
 
-                        </div>
+        </div>
 
 
     )
+
 }
+
+export default ChiefComplaint

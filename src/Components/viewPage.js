@@ -1,15 +1,40 @@
 import React,{Component} from 'react'
 
+// import varies viewpage Components
+
+import ChiefComplaint from './viewPageComponents/chiefComplaints'
+
+
+
+// defining date variable
+let date=new Date()
+let todaysDate=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
+
+
+// input elements are going to be defined globally
+let chief_complaint_element
+let complaint_history_input_element
+
+
+
 class ViewPage extends Component{
     constructor(props){
         super(props)
 
+
+
+        // adding referance to access the inputs in react
+        this.chief_complaint_input=React.createRef()
+        this.complaint_history_input=React.createRef()
+
+
+
         //Referance of all the data that will be recieved from electron for future Referance
-        this.state={loading:true,
+        this.state={loading:false,
                     data:{
             "Patient_id": null,
             "Patient_Name": null,
-            "Chief_Complaint": null,
+            "Chief_Complaint": "[[2,'27-07-1992','lorem','ipsum'],[1,'27-07-1992','bad','man']]",
             "Past_Medical_History": null,
             "Past_Dental_History": null,
             "Drug_Allergy": null,
@@ -27,6 +52,7 @@ class ViewPage extends Component{
 
         //functions custom
         this.handleClick=this.handleClick.bind(this)
+        this.handleClickChiefComplaint=this.handleClickChiefComplaint.bind(this)
 
     }
 
@@ -43,15 +69,24 @@ class ViewPage extends Component{
 
 
         // on Recieving the ProfileData
-        window.ipcRenderer.on('Data-From-Electron',(event,args) =>
-        {
-            this.setState(prevState =>
-                {
-                    return {loading:false,data:args[0]}
-                })
+        // window.ipcRenderer.on('Data-From-Electron',(event,args) =>
+        // {
+        //     this.setState(prevState =>
+        //         {
+        //             return {loading:false,data:args[0]}
+        //         })
                   
-        })
+        // })
         
+        // 
+
+
+
+        // we can assign refs only inside lifecycle methods
+        // VERY IMPORTANT
+        complaint_history_input_element=this.complaint_history_input
+        chief_complaint_element=this.chief_complaint_input
+       
 
 
     }
@@ -59,27 +94,207 @@ class ViewPage extends Component{
     handleClick(event){
         // show state when GoTo is pressed for Devolopment
         if(event.target.id ==='GoToButton') console.log(this.state)
+
+
+
+        
+
+        
+
+        
         
 
 
     }
 
+    //  button click for chief complaint section----------------------------
+    handleClickChiefComplaint(event)
+    {
+        // when add button in chief complaint is pressed
+        if(event.target.id ==='add_button_chief_Complaint')
+        {
+            console.log('pressed add button chief complaint')
+            // if there are no chief complaints yet
+            
+            
+            if(this.state.data.Chief_Complaint === null)
+            {
+
+
+                let entryone
+
+                // using the refs to get value
+                let chiefComplaint=chief_complaint_element.current.value
+                let historyOfComplaint=complaint_history_input_element.current.value
+                
+                let date = todaysDate
+                
+                // taking the entry
+                entryone=JSON.stringify(['1',date,chiefComplaint,historyOfComplaint])
+
+                let data=this.state.data
+                data.Chief_Complaint=entryone
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data}
+                    })
+            }
+
+            // if there are chief complaints in there
+            else{
+                
+                let entry
+
+                // using refs to get value
+                let chiefComplaint=chief_complaint_element.current.value
+                let historyOfComplaint=complaint_history_input_element.current.value
+                let date = todaysDate
+
+                
+                
+                //creating the entry to unshift into chief complaint array
+                
+                // getting the data in state and editing it
+                let data=this.state.data
+                let oldEntries=eval(data.Chief_Complaint)
+
+                entry=[parseInt(oldEntries.length+1),date,chiefComplaint,historyOfComplaint]
+
+                // add the new entry to first position
+                oldEntries.unshift(entry)
+                
+                data.Chief_Complaint=JSON.stringify(oldEntries)
+               
+                
+                
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+                
+
+                
+                
+
+            }
+
+
+
+
+        }
+    }
+
 
     render()
     {
+        
+
+       
         //function to render each Components
+
 
         //chief Complaint Component rendering Section
         let ChiefComplaints=() =>
-        {
+        {   
+            // if there is no chief complaint yet
+                if(this.state.data.Chief_Complaint === null)
+                {
 
+                   
+                    return(
+                        <div className='dataarea'>
+
+                            <div className='input_entry'>
+                            <div className='labels'>
+                                <p>Complaint:</p>
+                                <p>H/O Complaint:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Complaint' id='chief_complaint_input' ref={this.chief_complaint_input} ></input>
+                                <input placeholder='History of This Complaint' id='history_of_complaint_input' ref={this.complaint_history_input}></input>
+
+                            </div>
+                            <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div>
+                            <div className="add_button">
+                                <button id='add_button_chief_Complaint' onclick={this.handleClickChiefComplaint}>Add</button>
+
+                            </div>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+
+                        </div>
+                    )
+
+                }
+
+                else
+                {
+                     // first Make a temporary variable hold all the already entered Components
+                    let tempChiefComplaints= () =>
+                    {
+
+                        console.log(this.state.data.Chief_Complaint)
+                        let complaints=eval(this.state.data.Chief_Complaint)
+                        return complaints=complaints.map(item =>
+                            {
+                                return (
+                                    <ChiefComplaint key={item[0]} date={item[1]} chiefComplaint={item[2]} 
+                                        historyOfComplaint={item[3]} handleClickChiefComplaint={this.handleClickChiefComplaint} />
+                                )
+                            })
+                        
+                    }
+                    return (
+
+                        <div className='dataarea'>
+
+                            <div className='input_entry'>
+                            <div className='labels'>
+                                <p>Complaint:</p>
+                                <p>H/O Complaint:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Complaint' className='chief_complaint' ref={this.chief_complaint_input}></input>
+                                <input placeholder='History of This Complaint' className='history_of_complaint' ref={this.complaint_history_input}></input>
+
+                            </div>
+                            <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div>
+                            <div className="add_button">
+                                <button id='add_button_chief_Complaint' onClick={this.handleClickChiefComplaint}>Add</button>
+
+                            </div>
+                            <div>
+
+                            </div>
+
+                        </div>
+                        
+                            {tempChiefComplaints()}
+
+                        </div>
+                    )
+                    
+                }
         }
 
 
 
 
 
-
+        
 
 
 
@@ -146,59 +361,7 @@ class ViewPage extends Component{
                         <h2>Chief Complaint:</h2>
 
                     </div>
-                    <div className='dataarea'>
-                        <div className='input_entry'>
-                            <div className='labels'>
-                                <p>Complaint:</p>
-                                <p>H/O Complaint:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <input placeholder='Complaint' className='input_extraoral'></input>
-                                <input placeholder='History of This Complaint' className='input_intraoral'></input>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="add_button">
-                                <button id='add_button_chief_Complaint'>Add</button>
-
-                            </div>
-                            <div>
-
-                            </div>
-
-                        </div>
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Chief Complaint:</p>
-                                <p>H/O Complaint:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <p>chief complaint</p>
-                                
-                                <p>H/O Chief Complaint</p>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="delete_button">
-                                <button className='delete_button_chief_complaint'>Delete</button>
-
-                            </div>
-                            <div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    {ChiefComplaints()}
 
                 
 
