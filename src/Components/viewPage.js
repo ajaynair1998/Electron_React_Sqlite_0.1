@@ -39,7 +39,7 @@ class ViewPage extends Component{
             "Past_Medical_History": null,
             "Past_Dental_History": null,
             "Drug_Allergy": null,
-            "General_Examination": null,
+            "General_Examination": "[[2,'27-98-9876','120/80','80F','20%'],[1,'27-98-9876','130/80','90F','30%']]",
             "Local_Examination": null,
             "Clinical_Diagnosis": null,
             "Investigation": null,
@@ -377,11 +377,81 @@ class ViewPage extends Component{
         let generalExaminations = () =>
         {
             // if there is no General Examination Yet
-            if(this.state.General_Examination === null)
+            if(this.state.data.General_Examination === null)
             {
+                return (
+                    <div className='dataarea'>
+                            <div className='single_input'>
+                                <div><input id='bp' placeholder="BP"></input></div>
+                                <div><input id='temperature' placeholder="Temperature"></input></div>
+                                <div><input id='o2_saturation' placeholder="O2"></input></div>
+                                <div><button>Add</button></div>
+                            </div>
+                            <div className='labels'>
+                                <p>BP</p>
+                                <p>Temperature</p>
+                                <p>Oxygen Saturation</p>
+                                <p>Date Of Entry</p>
+
+                            </div>
+                            
+                            
+                            
+
+                        </div>
+
+                )
+            }
+            // if there is existing general examination entries
+            else{
+                // temperoray variable for storing internal input entries before passing them
+                // to parent div dataarea
+                let tempGeneralExaminations= () =>
+                {
+                    // convert the string of general examinations into array of arrays
+                    let generalExamination = eval(this.state.data.General_Examination)
+                  
+
+                    return generalExamination.map(item =>
+                        {
+                            return(
+                                <GeneralExamination key={item[0]} index={item[0]} date={item[1]}
+                                bp={item[2]} temperature={item[3]} oxygensaturation={item[4]}/>
+                            )
+                        })
+
+
+                }
+
+                return (
+
+                    <div className='dataarea'>
+                            <div className='single_input'>
+                                <div><input id='bp' placeholder="BP"></input></div>
+                                <div><input id='temperature' placeholder="Temperature"></input></div>
+                                <div><input id='o2_saturation' placeholder="O2"></input></div>
+                                <div><button>Add</button></div>
+                            </div>
+                            <div className='labels'>
+                                <p>BP</p>
+                                <p>Temperature</p>
+                                <p>Oxygen Saturation</p>
+                                <p>Date Of Entry</p>
+
+                            </div>
+                            
+                            {tempGeneralExaminations()}
+                            
+
+                        </div>
+
+                )
 
             }
         }
+
+        // General Examinations Sections Rendering Done
+        // --------------------------
 
 
 
@@ -540,32 +610,8 @@ class ViewPage extends Component{
                             <h2>General Examination:</h2>
 
                         </div>
-                        <div className='dataarea'>
-                            <div className='single_input'>
-                                <div><input id='bp' placeholder="BP"></input></div>
-                                <div><input id='temperature' placeholder="Temperature"></input></div>
-                                <div><input id='o2_saturation' placeholder="O2"></input></div>
-                                <div><button>Add</button></div>
-                            </div>
-                            <div className='labels'>
-                                <p>BP</p>
-                                <p>Temperature</p>
-                                <p>Oxygen Saturation</p>
-                                <p>Date Of Entry</p>
-
-                            </div>
-                            
-                            <div className='single_entry'>
-                                <p>120/80</p>
-                                <p>98 F</p>
-                                <p>70%</p>
-                                <p>27-09-2007</p>
-                                <button id='delete_button_General_Examination'>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
+                        
+                        {generalExaminations()}
 
                     </div>
 
