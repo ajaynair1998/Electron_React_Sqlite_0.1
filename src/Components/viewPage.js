@@ -54,6 +54,11 @@ class ViewPage extends Component{
         this.handleClick=this.handleClick.bind(this)
         this.handleClickChiefComplaint=this.handleClickChiefComplaint.bind(this)
 
+        // handlechange functions for text areas
+        // Past medical History,Past Dental History,Drug Allergy
+        this.handleChangeTextAreas=this.handleChangeTextAreas.bind(this)
+        
+
     }
 
     // will fire when trying to load
@@ -229,6 +234,32 @@ class ViewPage extends Component{
 
 
 
+    // handleChange for textAreas
+
+    handleChangeTextAreas(event)
+    {
+        // change their respective dataarea in state to current input
+
+        // get the current data state
+        let data=this.state.data
+
+        // now change this datastate with the entry that was edited
+        let currentEntry= event.target.id
+        let currentValue=event.target.value
+
+        // adding the newly added data into the data property
+        data[currentEntry]=currentValue
+
+        this.setState(prevState =>
+            {
+                return {...prevState,data:data}
+            })
+        
+    }
+
+    // textareas sections done -----------------------------------------------------------------------
+
+
 
 
     render()
@@ -288,7 +319,7 @@ class ViewPage extends Component{
                     let tempChiefComplaints= () =>
                     {
 
-                        console.log(this.state.data.Chief_Complaint)
+                        
                         let complaints=eval(this.state.data.Chief_Complaint)
                         return complaints=complaints.map(item =>
                             {
@@ -429,7 +460,7 @@ class ViewPage extends Component{
                     <h2>Past medical History:</h2>
                     </div>
                     <div className='dataarea'>
-                    <textarea placeholder="No Past medical History Yet"></textarea>
+                    <textarea id='Past_Medical_History' placeholder="No Past medical History Yet" onChange={this.handleChangeTextAreas}></textarea>
                     <button>Edit</button>
                     </div>       
                 </div>
@@ -451,7 +482,7 @@ class ViewPage extends Component{
                         <h2>Past Dental History:</h2>
                         </div>
                         <div className='dataarea'>
-                        <textarea placeholder="No Past Dental History"></textarea>
+                        <textarea id="Past_Dental_History" placeholder="No Past Dental History" onChange={this.handleChangeTextAreas}></textarea>
                         <button>Edit</button>
                         </div>       
                     </div>
@@ -472,7 +503,7 @@ class ViewPage extends Component{
                             <button className='no_button'>No</button>
                             </div> --> */}
                             <div className='drug_allergy_input'>
-                            <textarea id='drug_allergy_input' placeholder="No Drug Allergies Found Yet"></textarea>
+                            <textarea id='Drug_Allergy' placeholder="No Drug Allergies Found Yet" onChange={this.handleChangeTextAreas}></textarea>
                             </div>
                         </div>
 
