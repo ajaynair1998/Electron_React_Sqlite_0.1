@@ -262,6 +262,8 @@ class ViewPage extends Component{
 
 
 
+
+
     render()
     {
         
@@ -368,6 +370,7 @@ class ViewPage extends Component{
         }
 
         // chief complaint Section Rendering Done -----------------------
+
 
 
 
@@ -522,6 +525,12 @@ class ViewPage extends Component{
 
                         </div>
                         <div className='dataarea'>
+                            <div className='single_input'>
+                                <div><input id='bp' placeholder="BP"></input></div>
+                                <div><input id='temperature' placeholder="Temperature"></input></div>
+                                <div><input id='o2_saturation' placeholder="O2"></input></div>
+                                <div><button>Add</button></div>
+                            </div>
                             <div className='labels'>
                                 <p>BP</p>
                                 <p>Temperature</p>
@@ -529,19 +538,16 @@ class ViewPage extends Component{
                                 <p>Date Of Entry</p>
 
                             </div>
-                            <div className='single_input'>
-                                <div><input id='bp' placeholder="BP"></input></div>
-                                <div><input id='temperature' placeholder="Temperature"></input></div>
-                                <div><input id='o2_saturation' placeholder="O2"></input></div>
-                                <div><button>Add</button></div>
-                            </div>
+                            
                             <div className='single_entry'>
                                 <p>120/80</p>
                                 <p>98 F</p>
                                 <p>70%</p>
                                 <p>27-09-2007</p>
+                                <button id='delete_button_General_Examination'>Delete</button>
 
                             </div>
+                            
 
                         </div>
 

@@ -394,7 +394,6 @@
 #view #general_examination{
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     /* background-color: rgb(209, 175, 214); */
     max-width: 90%;
     margin:0 70px;
@@ -417,28 +416,29 @@
 #view #general_examination .dataarea .labels{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:82%;
     /* background-color: saddlebrown; */
 
     
    
 }
-
-
-#view #general_examination .dataarea .labels p{
-    align-self: start;
+#view #general_examination .dataarea .labels div{
     width:25%;
-
-
 }
+
+
+
 
 
 #view #general_examination .dataarea .single_entry{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: flex-start;
     /* background-color: royalblue; */
-    /* gap: 10%; */
+   
 
 }
 
@@ -447,12 +447,21 @@
     align-self: start;
 }
 
-#view #general_examination .single_input{
+#view #general_examination .dataarea .single_entry button{
+    align-self: flex-start;
+    width:50px;
+    padding:3px;
+    align-self: start;
+}
+
+#view #general_examination .dataarea .single_input{
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:space-between;
+    align-content: flex-start;
+    width:100%;
     /* background-color: rosybrown; */
-    gap: 5px;
+    
     
 
     
@@ -461,18 +470,30 @@
 
 
 #view #general_examination .single_input div{
+    align-content: space-between;
+    width:18%;
+    justify-content: flex-start;
+    
 
-    display:block;
-    width: 20%;
-    align-self: center;
+    
    
 
     
 }
 
-#view #general_examination .single_input div input,button{
+#view #general_examination .single_input div input{
     min-width: 0;
-    max-width: 80px;
+    width:100%;
+    border-radius: 4px;
+    padding:3px;
+    /* max-width: 80px; */
+}
+
+#view #general_examination .single_input div button{
+    min-width: 0;
+    width:100%;
+    padding:3px;
+    /* max-width: 80px; */
 }
 
  
