@@ -3,6 +3,7 @@ import React,{Component} from 'react'
 // import varies viewpage Components
 
 import ChiefComplaint from './viewPageComponents/chiefComplaints'
+import GeneralExamination from './viewPageComponents/generalExaminations'
 
 
 
@@ -371,7 +372,22 @@ class ViewPage extends Component{
 
         // chief complaint Section Rendering Done -----------------------
 
+        // Starting General Examination Rendering Section   -----------------------
 
+        let generalExaminations = () =>
+        {
+            // if there is no General Examination Yet
+            if(this.state.General_Examination === null)
+            {
+
+            }
+        }
+
+
+
+        
+        
+        
 
 
 
