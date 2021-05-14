@@ -411,6 +411,7 @@
     height:300px;
     padding:20px;
     gap:30px;
+    overflow-y: scroll;
 }
 
 #view #general_examination .dataarea .labels{
@@ -418,7 +419,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width:82%;
+    width:81.5%;
     /* background-color: saddlebrown; */
 
     
@@ -426,6 +427,10 @@
 }
 #view #general_examination .dataarea .labels div{
     width:25%;
+}
+
+#view #general_examination .dataarea .labels :nth-child(2){
+    transform: translateX(25px);
 }
 
 

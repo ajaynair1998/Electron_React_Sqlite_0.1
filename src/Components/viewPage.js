@@ -15,6 +15,9 @@ let todaysDate=`${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
 // input elements are going to be defined globally
 let chief_complaint_element
 let complaint_history_input_element
+let bp_element
+let temperature_element
+let oxygensaturation_element
 
 
 
@@ -27,6 +30,9 @@ class ViewPage extends Component{
         // adding referance to access the inputs in react
         this.chief_complaint_input=React.createRef()
         this.complaint_history_input=React.createRef()
+        this.bp_input=React.createRef()
+        this.temperature_input=React.createRef()
+        this.oxygensaturation_input=React.createRef()
 
 
 
@@ -54,6 +60,7 @@ class ViewPage extends Component{
         //functions custom
         this.handleClick=this.handleClick.bind(this)
         this.handleClickChiefComplaint=this.handleClickChiefComplaint.bind(this)
+        this.handleClickGeneralExamination=this.handleClickGeneralExamination.bind(this)
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -92,7 +99,9 @@ class ViewPage extends Component{
         // VERY IMPORTANT
         complaint_history_input_element=this.complaint_history_input
         chief_complaint_element=this.chief_complaint_input
-       
+        bp_element=this.bp_input
+        oxygensaturation_element=this.oxygensaturation_input
+        temperature_element=this.temperature_input
 
 
     }
@@ -219,7 +228,7 @@ class ViewPage extends Component{
             //add this to data
             data.Chief_Complaint=entries 
            
-            
+          
             // Now make this the new state
                 this.setState(prevState =>
                 {
@@ -233,6 +242,107 @@ class ViewPage extends Component{
 
     //chief complaint section buttons are done ---------------------------------- 
 
+
+
+    
+    
+    // general Examination click buttons start
+    handleClickGeneralExamination(event)
+    {
+        // get value of inputs using refs
+        
+
+        // if add button is pressed
+        if(event.target.id === 'general_examination_add_button')
+        {
+
+            // getting all 3 input field values
+            let bp=bp_element.current.value
+            let temperature=temperature_element.current.value
+            let oxygensaturation=oxygensaturation_element.current.value
+
+            // now add this into our state
+
+            
+            
+            // if current state is empty
+            if(this.state.data.General_Examination === null )
+            {
+                let data =this.state.data
+                data.General_Examination =JSON.stringify([[1,todaysDate,bp,temperature,oxygensaturation]])
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+            }
+            
+            
+            // if the state is non empty we have to add the entry to the first position
+            else
+            {
+
+                let data=this.state.data
+                let entries=eval(data.General_Examination)
+
+                // putting current values to an array
+                let currentEntry =[entries.length+1,todaysDate,bp,temperature,oxygensaturation]
+
+                // now add this to first position in entries
+                entries.unshift(currentEntry)
+                
+                // now change this to string
+                entries=JSON.stringify(entries)
+
+                // now add new propert to data object
+                data.General_Examination=entries
+
+                console.log(data)
+                // now add this to state
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+                
+
+
+            }
+            
+        }
+
+
+        // if delete button of a general examination is pressed
+        else if(event.target.id === 'delete_button_General_Examination')
+        {   
+            console.log('deete pressed')
+            let data=this.state.data
+            let entries=eval(data.General_Examination)
+            let index=event.target.className
+
+            entries=entries.filter(item =>
+                {
+                    if(item[0] != index)
+                    {
+                        return item
+                    }
+                })
+            
+            data.General_Examination=JSON.stringify(entries)
+
+            this.setState(prevState =>
+                
+                {
+                    return {...prevState,data:data}
+                })
+
+        }
+    }
+
+    // General Examination handleClicks done
+    // ---------------------------------------------------------------------------------
+
+
+    
 
 
     // handleChange for textAreas
@@ -382,10 +492,10 @@ class ViewPage extends Component{
                 return (
                     <div className='dataarea'>
                             <div className='single_input'>
-                                <div><input id='bp' placeholder="BP"></input></div>
-                                <div><input id='temperature' placeholder="Temperature"></input></div>
-                                <div><input id='o2_saturation' placeholder="O2"></input></div>
-                                <div><button>Add</button></div>
+                                <div><input id='bp' placeholder="BP" ref={this.bp_input}></input></div>
+                                <div><input id='temperature' placeholder="Temperature" ref={this.temperature_input}></input></div>
+                                <div><input id='o2_saturation' placeholder="O2" ref={this.oxygensaturation_input}></input></div>
+                                <div><button id='general_examination_add_button' onClick={this.handleClickGeneralExamination}>Add</button></div>
                             </div>
                             <div className='labels'>
                                 <p>BP</p>
@@ -416,7 +526,7 @@ class ViewPage extends Component{
                         {
                             return(
                                 <GeneralExamination key={item[0]} index={item[0]} date={item[1]}
-                                bp={item[2]} temperature={item[3]} oxygensaturation={item[4]}/>
+                                bp={item[2]} temperature={item[3]} oxygensaturation={item[4]} handleClickGeneralExamination={this.handleClickGeneralExamination}/>
                             )
                         })
 
@@ -427,10 +537,10 @@ class ViewPage extends Component{
 
                     <div className='dataarea'>
                             <div className='single_input'>
-                                <div><input id='bp' placeholder="BP"></input></div>
-                                <div><input id='temperature' placeholder="Temperature"></input></div>
-                                <div><input id='o2_saturation' placeholder="O2"></input></div>
-                                <div><button>Add</button></div>
+                                <div><input id='bp' placeholder="BP" ref={this.bp_input}></input></div>
+                                <div><input id='temperature' placeholder="Temperature" ref={this.temperature_input}></input></div>
+                                <div><input id='o2_saturation' placeholder="O2" ref={this.oxygensaturation_input}></input></div>
+                                <div><button id='general_examination_add_button' onClick={this.handleClickGeneralExamination}>Add</button></div>
                             </div>
                             <div className='labels'>
                                 <p>BP</p>
