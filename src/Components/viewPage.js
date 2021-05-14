@@ -107,6 +107,9 @@ class ViewPage extends Component{
 
     }
 
+   
+   
+   
     //  button click for chief complaint section----------------------------
     handleClickChiefComplaint(event)
     {
@@ -184,11 +187,48 @@ class ViewPage extends Component{
 
         }
 
+        // when an entry's delete button is pressed
         else if(event.target.id === 'delete_button_chief_complaint')
         {
-            console.log('delete pressed')
+            // get the index of the delete buttton that fired
+            let index=event.target.className
+            // get the current entries
+            let data=this.state.data
+
+            // filter out the entries so we have only the remaining entries
+            let entries=eval(data.Chief_Complaint)
+
+            entries=entries.filter(item =>
+                {
+                    if(item[0] != index)
+                    {
+                        return item
+                    }
+                })
+          
+            // turn it back to string
+            entries=JSON.stringify(entries)
+
+            
+            //add this to data
+            data.Chief_Complaint=entries 
+           
+            
+            // Now make this the new state
+                this.setState(prevState =>
+                {
+                    return {...prevState,data:data}
+                })
+            
+
         }
     }
+
+
+    //chief complaint section buttons are done ---------------------------------- 
+
+
+
 
 
     render()
@@ -197,6 +237,7 @@ class ViewPage extends Component{
 
        
         //function to render each Components
+
 
 
         //chief Complaint Component rendering Section
@@ -252,7 +293,7 @@ class ViewPage extends Component{
                         return complaints=complaints.map(item =>
                             {
                                 return (
-                                    <ChiefComplaint key={item[0]} date={item[1]} chiefComplaint={item[2]} 
+                                    <ChiefComplaint key={item[0]} index={item[0]} date={item[1]} chiefComplaint={item[2]} 
                                         historyOfComplaint={item[3]} handleClickChiefComplaint={this.handleClickChiefComplaint} />
                                 )
                             })
@@ -294,6 +335,8 @@ class ViewPage extends Component{
                     
                 }
         }
+
+        // chief complaint Section Rendering Done -----------------------
 
 
 
