@@ -4,6 +4,7 @@ import React,{Component} from 'react'
 
 import ChiefComplaint from './viewPageComponents/chiefComplaints'
 import GeneralExamination from './viewPageComponents/generalExaminations'
+import LocalExamination from './viewPageComponents/localExaminations'
 
 
 
@@ -18,6 +19,8 @@ let complaint_history_input_element
 let bp_element
 let temperature_element
 let oxygensaturation_element
+let extra_oral_element
+let intra_oral_element
 
 
 
@@ -33,6 +36,8 @@ class ViewPage extends Component{
         this.bp_input=React.createRef()
         this.temperature_input=React.createRef()
         this.oxygensaturation_input=React.createRef()
+        this.extra_oral_input=React.createRef()
+        this.intra_oral_input=React.createRef()
 
 
 
@@ -46,7 +51,7 @@ class ViewPage extends Component{
             "Past_Dental_History": null,
             "Drug_Allergy": null,
             "General_Examination": "[[2,'27-98-9876','120/80','80F','20%'],[1,'27-98-9876','130/80','90F','30%']]",
-            "Local_Examination": null,
+            "Local_Examination": "[[1,'25-34-9876','extraoral something','intra oral something']]",
             "Clinical_Diagnosis": null,
             "Investigation": null,
             "Treatment_Plan": null,
@@ -61,6 +66,7 @@ class ViewPage extends Component{
         this.handleClick=this.handleClick.bind(this)
         this.handleClickChiefComplaint=this.handleClickChiefComplaint.bind(this)
         this.handleClickGeneralExamination=this.handleClickGeneralExamination.bind(this)
+        this.handleClickLocalExamination=this.handleClickLocalExamination.bind(this)
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -102,6 +108,8 @@ class ViewPage extends Component{
         bp_element=this.bp_input
         oxygensaturation_element=this.oxygensaturation_input
         temperature_element=this.temperature_input
+        extra_oral_element=this.extra_oral_input
+        intra_oral_element=this.intra_oral_input
 
 
     }
@@ -339,10 +347,98 @@ class ViewPage extends Component{
     }
 
     // General Examination handleClicks done
-    // ---------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------
 
 
+
+    // Local Examination Handle CLicks Section start
+    // --------------------------------------------------------------------------------------
     
+
+
+    handleClickLocalExamination(event)
+    {
+        // if add button is pressed
+        if(event.target.id === "add_button_local_examination")
+        {
+            // if there is no local examination yet
+            if(this.state.data.Local_Examination === null)
+            {
+                let extraOralValue =extra_oral_element.current.value
+                let intraOralValue=intra_oral_element.current.value
+
+                let data=this.state.data
+
+                let currentEntry = [[1,todaysDate,extraOralValue,intraOralValue]]
+                data.Local_Examination=JSON.stringify(currentEntry)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+
+            }
+
+            // if there is existing local Examinations
+            else
+            {
+                // get the values from input fields
+                let extraOralValue =extra_oral_element.current.value
+                let intraOralValue=intra_oral_element.current.value
+
+                // get current entries
+                let data=this.state.data
+
+                let entries=eval(data.Local_Examination)
+                let currentEntry = [entries.length+1,todaysDate,extraOralValue,intraOralValue]
+                
+                // add new entry to first position
+                entries.unshift(currentEntry)
+
+                // convert to string  and add to state
+                data.Local_Examination=JSON.stringify(entries)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+            }
+        }
+
+        // if delete is pressed
+        else if(event.target.id === 'delete_button_local_examination')
+        {
+            
+            let data=this.state.data
+            let entries=eval(data.Local_Examination)
+            let index=event.target.className
+
+            entries=entries.filter(item =>
+                {
+                    if(item[0] != index)
+                    {
+                        return item
+                    }
+                })
+            
+            data.Local_Examination=JSON.stringify(entries)
+
+            this.setState(prevState =>
+                
+                {
+                    return {...prevState,data:data}
+                })
+
+
+        }
+
+    }
+
+
+
+
+
+
 
 
     // handleChange for textAreas
@@ -565,7 +661,91 @@ class ViewPage extends Component{
 
 
 
-        
+        // Starting Local Examination Rendering Section --------------------------------------
+
+        let localExaminations = () =>
+        {
+            // when the state is null ie ; no examinations yet
+            if(this.state.data.Local_Examination === null)
+            {
+                return (
+                    <div className='dataarea'>
+                        <div className='input_entry'>
+                            <div className='labels'>
+                                <p>Extra Oral:</p>
+                                <p>Intra Oral:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Extra Oral' className='input_extraoral' ref={this.extra_oral_input}></input>
+                                <input placeholder='Intra Oral' className='input_intraoral' ref={this.intra_oral_input}></input>
+
+                            </div>
+                            
+                            <div className="add_button">
+                                <button id='add_button_local_examination' onClick={this.handleClickLocalExamination}>Add</button>
+
+                            </div>
+                            <div>
+
+                            </div>
+
+                        </div>
+
+                     
+
+                    </div>
+                )
+            }
+
+            // if there is existing local examinations in state
+            else
+            {
+                // get the current local examinations
+                let tempLocalExaminations= () =>
+                {
+                    let localExaminations= eval(this.state.data.Local_Examination)
+
+                    return localExaminations.map(item =>
+                        {
+                            return (
+                                <LocalExamination key={item[0]} index={item[0]} date={item[1]}
+                                extraoral ={item[2]} intraoral={item[3]} 
+                                handleClickLocalExamination={this.handleClickLocalExamination}/>
+                            )
+                        })
+                }
+
+                return(
+                    <div className='dataarea'>
+                        <div className='input_entry'>
+                            <div className='labels'>
+                                <p>Extra Oral:</p>
+                                <p>Intra Oral:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Extra Oral' className='input_extraoral' ref={this.extra_oral_input}></input>
+                                <input placeholder='Intra Oral' className='input_intraoral' ref={this.intra_oral_input}></input>
+
+                            </div>
+                            
+                            <div className="add_button">
+                                <button id='add_button_local_examination' onClick={this.handleClickLocalExamination}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                        {tempLocalExaminations()}
+
+                     
+
+                    </div>
+                )
+
+            }
+        }
         
         
 
@@ -735,59 +915,7 @@ class ViewPage extends Component{
                         <h2>Local Examination:</h2>
 
                     </div>
-                    <div className='dataarea'>
-                        <div className='input_entry'>
-                            <div className='labels'>
-                                <p>Extra Oral:</p>
-                                <p>Intra Oral:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <input placeholder='Extra Oral' className='input_extraoral'></input>
-                                <input placeholder='Intra Oral' className='input_intraoral'></input>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="add_button">
-                                <button id='add_button_local_examination'>Add</button>
-
-                            </div>
-                            <div>
-
-                            </div>
-
-                        </div>
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Extra Oral:</p>
-                                <p>Intra Oral:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <p>Something about Extra Oral</p>
-                                
-                                <p>Something about Intra Oral</p>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="delete_button">
-                                <button className='delete_button_local_examination'>Delete</button>
-
-                            </div>
-                            <div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                            {localExaminations()}
 
                 </div>
 
