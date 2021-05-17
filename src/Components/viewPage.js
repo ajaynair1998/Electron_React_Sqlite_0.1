@@ -6,6 +6,7 @@ import ChiefComplaint from './viewPageComponents/chiefComplaints'
 import GeneralExamination from './viewPageComponents/generalExaminations'
 import LocalExamination from './viewPageComponents/localExaminations'
 import ClinicalDiagnosis from './viewPageComponents/clinicalDiagnosis'
+import Diagnosis from './viewPageComponents/diagnosis'
 
 
 
@@ -23,6 +24,7 @@ let oxygensaturation_element
 let extra_oral_element
 let intra_oral_element
 let clinical_diagnosis_element
+let diagnosis_element
 
 
 
@@ -41,6 +43,7 @@ class ViewPage extends Component{
         this.extra_oral_input=React.createRef()
         this.intra_oral_input=React.createRef()
         this.clinical_diagnosis_input=React.createRef()
+        this.diagnosis_input=React.createRef()
 
 
 
@@ -71,6 +74,7 @@ class ViewPage extends Component{
         this.handleClickGeneralExamination=this.handleClickGeneralExamination.bind(this)
         this.handleClickLocalExamination=this.handleClickLocalExamination.bind(this)
         this.handleClickClinicalDiagnosis=this.handleClickClinicalDiagnosis.bind(this)
+        this.handleClickDiagnosis=this.handleClickDiagnosis.bind(this)
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -115,6 +119,7 @@ class ViewPage extends Component{
         extra_oral_element=this.extra_oral_input
         intra_oral_element=this.intra_oral_input
         clinical_diagnosis_element=this.clinical_diagnosis_input
+        diagnosis_element=this.diagnosis_input
 
 
     }
@@ -524,7 +529,90 @@ class ViewPage extends Component{
     // handleclicks for clinical diagnosis done
     // -----------------------------------------------------------------------
 
+    // Diagnosis HandleClicks start
+    // -----------------------------------------------------------------------
 
+    handleClickDiagnosis(event)
+    {
+          // if add button is pressed
+          if(event.target.id === "add_button_diagnosis")
+          {
+              // if there is no Diagnosis yet
+              if(this.state.data.Diagnosis === null)
+              {
+                  let diagnosisValue =diagnosis_element.current.value
+                  
+  
+                  let data=this.state.data
+  
+                  let currentEntry = [[1,todaysDate,diagnosisValue]]
+                  data.Diagnosis=JSON.stringify(currentEntry)
+  
+                  this.setState(prevState =>
+                      {
+                          return {...prevState,data:data}
+                      })
+  
+              }
+  
+              // if there is existing Diagnosis
+              else
+              {
+                  // get the values from input fields
+                  let diagnosisValue =diagnosis_element.current.value
+                  
+  
+                  // get current entries
+                  let data=this.state.data
+  
+                  let entries=eval(data.Diagnosis)
+                  let currentEntry = [entries.length+1,todaysDate,diagnosisValue]
+                  
+                  // add new entry to first position
+                  entries.unshift(currentEntry)
+  
+                  // convert to string  and add to state
+                  data.Diagnosis=JSON.stringify(entries)
+  
+                  this.setState(prevState =>
+                      {
+                          return {...prevState,data:data}
+                      })
+              }
+          }
+  
+          // if delete is pressed
+          else if(event.target.id === 'delete_button_diagnosis')
+          {
+              let data=this.state.data
+              let entries=eval(data.Diagnosis)
+              let index=event.target.className
+  
+              entries=entries.filter(item =>
+                  {
+                      if(item[0] != index)
+                      {
+                          return item
+                      }
+                  })
+              
+              data.Diagnosis=JSON.stringify(entries)
+  
+              this.setState(prevState =>
+                  
+                  {
+                      return {...prevState,data:data}
+                  })
+  
+  
+          }
+  
+    }
+
+
+
+    // diagnosis handleCLicks Done
+    // ------------------------------------------------------------------------
 
 
 
@@ -929,6 +1017,94 @@ class ViewPage extends Component{
 
         // clinicalDiagnosis rendering done -------------------------------------------
         
+        // Starting Diagnosis Rendering Section ---------------------------------------
+
+        let diagnosis = () =>
+        {
+            if(this.state.data.Diagnosis === null)
+            {
+                return (
+                    <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <p>New:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Add Diagnosis' ref={this.diagnosis_input}></input>
+
+                            </div>
+                            {/* <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div> */}
+                            <div className="add_button">
+                                <button id='add_button_diagnosis' 
+                                onClick={this.handleClickDiagnosis}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+
+                </div>
+                        
+
+
+                        
+
+                )
+            }
+            // if there is existing  Diagnosis in state.data.Diagnosis
+            else
+            {
+                // temporarily store the existing diagnosis before adding to data area
+                let tempDiagnosis= () =>
+                {
+                    let diagnosislist=eval(this.state.data.Diagnosis)
+
+                    return diagnosislist.map(item =>
+                       {
+                           return (
+                               <Diagnosis  key={item[0]} index={item[0]} date={item[1]}
+                               handleClickDiagnosis={this.handleClickDiagnosis}
+                               diagnosis={item[2]}/>
+                           )
+                       } 
+                    )
+                }
+
+                return(
+                    <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <p>New:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Add Diagnosis' ref={this.diagnosis_input}></input>
+
+                            </div>
+                            {/* <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div> */}
+                            <div className="add_button">
+                                <button id='add_button_diagnosis' 
+                                onClick={this.handleClickDiagnosis}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                            {tempDiagnosis()}
+                </div>
+                )
+
+            }
+        }
+
+        // Diagnosis Rendering Section Done------------------------------------------
 
 
 
@@ -1202,53 +1378,7 @@ class ViewPage extends Component{
                     <h2>Diagnosis:</h2>
 
                 </div>
-                <div className='dataarea'>
-                    <div className='input_entry'>
-                            <div className='labels'>
-                                <p>New:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <input placeholder='Add Diagnosis'></input>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="add_button">
-                                <button id='add_button_diagnosis'>Add</button>
-
-                            </div>
-                            
-
-                        </div>
-                        
-
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Diagnosis:</p>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                               <p>Older Diagnosis displayed in a list here</p>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="delete_button">
-                                <button className='delete_button_clinical_diagnosis'>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
-
-                </div>
+                {diagnosis()}
                 
 
             </div>
