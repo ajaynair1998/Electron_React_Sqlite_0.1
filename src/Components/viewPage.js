@@ -8,6 +8,7 @@ import LocalExamination from './viewPageComponents/localExaminations'
 import ClinicalDiagnosis from './viewPageComponents/clinicalDiagnosis'
 import Diagnosis from './viewPageComponents/diagnosis'
 import TreatmentPlan from './viewPageComponents/treatmentPlan'
+import Medicine from './viewPageComponents/medicine'
 
 
 
@@ -28,6 +29,8 @@ let clinical_diagnosis_element
 let diagnosis_element
 let treatment_plan_element
 let treatment_element
+let medicine_type_element
+let medicine_element
 
 
 
@@ -49,6 +52,8 @@ class ViewPage extends Component{
         this.diagnosis_input=React.createRef()
         this.treatment_plan_input=React.createRef()
         this.treatment_input=React.createRef()
+        this.medicine_type_input=React.createRef()
+        this.medicine_input=React.createRef()
 
 
 
@@ -81,6 +86,7 @@ class ViewPage extends Component{
         this.handleClickClinicalDiagnosis=this.handleClickClinicalDiagnosis.bind(this)
         this.handleClickDiagnosis=this.handleClickDiagnosis.bind(this)
         this.handleClickTreatmentPlan=this.handleClickTreatmentPlan.bind(this)
+        this.handleClickMedicine=this.handleClickMedicine.bind(this)
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -128,6 +134,8 @@ class ViewPage extends Component{
         diagnosis_element=this.diagnosis_input
         treatment_plan_element=this.treatment_plan_input
         treatment_element=this.treatment_input
+        medicine_type_element=this.medicine_type_input
+        medicine_element=this.medicine_input
 
 
     }
@@ -705,7 +713,88 @@ class ViewPage extends Component{
 
     // Handleclicks for Treatment plan done ----------------------------------------
 
+    // Starting handleClicks for Medicine
 
+     handleClickMedicine(event)
+    {
+        // if add button is pressed
+        if(event.target.id === "add_button_medicine")
+        {
+            // if there is no medicine plan yet
+            if(this.state.data.Medicines === null)
+            {
+                let medicineTypeValue =medicine_type_element.current.value
+                let medicineValue=medicine_element.current.value
+
+                let data=this.state.data
+
+                let currentEntry = [[1,todaysDate,medicineTypeValue,medicineValue]]
+                data.Medicines=JSON.stringify(currentEntry)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+
+            }
+
+            // if there is existing medicines 
+            else
+            {
+                // get the values from input fields
+                let medicineTypeValue =medicine_type_element.current.value
+                let medicineValue=medicine_element.current.value
+
+                // get current entries
+                let data=this.state.data
+
+                let entries=eval(data.Medicines)
+                let currentEntry = [entries.length+1,todaysDate,medicineTypeValue,medicineValue]
+                
+                // add new entry to first position
+                entries.unshift(currentEntry)
+
+                // convert to string  and add to state
+                data.Medicines=JSON.stringify(entries)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+            }
+        }
+
+        // if delete is pressed
+        else if(event.target.id === 'delete_button_medicine')
+        {
+            
+            let data=this.state.data
+            let entries=eval(data.Medicines)
+            let index=event.target.className
+
+            entries=entries.filter(item =>
+                {
+                    if(item[0] != index)
+                    {
+                        return item
+                    }
+                })
+            
+            data.Medicines=JSON.stringify(entries)
+
+            this.setState(prevState =>
+                
+                {
+                    return {...prevState,data:data}
+                })
+
+
+        }
+
+    }
+
+
+    // handleclicks for medicine Done----------------------------
 
     // handleChange for textAreas
 
@@ -1306,6 +1395,116 @@ class ViewPage extends Component{
 
         // treatment plan rendering section done
 
+        // Medicine Rendering Section start --------------
+
+
+        let medicineRender=() =>
+        {   
+            // if there is no Treatment plan yet yet
+                if(this.state.data.Medicines === null)
+                {
+
+                   
+                    return(
+                        
+                <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <select name="medicines" id="medicine_type" ref={this.medicine_type_input}>
+                                    <option value="Tablet">Tablet</option>
+                                    <option value="Capsule">Capsule</option>
+                                    <option value="Syrup">Syrup</option>
+                                    <option value="Topical">Topical</option>
+                                    <option value="Injection">Injection</option>
+                                </select>
+                                    
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Medicine Name' id='medicine_name'
+                                ref={this.medicine_input}></input>
+
+                            </div>
+                            {/* <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div> */}
+                            <div className="add_button">
+                                <button id='add_button_medicine' onClick={this.handleClickMedicine}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+
+                </div>
+            
+                    )
+
+                }
+
+                else
+                {
+                     // first Make a temporary variable hold all the already entered Components
+                    let tempMedicine= () =>
+                    {
+
+                        
+                        let medicine=eval(this.state.data.Medicines)
+                        return medicine=medicine.map(item =>
+                            {
+                                return (
+                                    <Medicine key={item[0]} index={item[0]} date={item[1]} medicinetype={item[2]} 
+                                        medicine={item[3]} handleClickMedicine={this.handleClickMedicine} />
+                                )
+                            })
+                        
+                    }
+                    return (
+
+                        <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <select name="medicines" id="medicine_type" ref={this.medicine_type_input}>
+                                    <option value="Tablet">Tablet</option>
+                                    <option value="Capsule">Capsule</option>
+                                    <option value="Syrup">Syrup</option>
+                                    <option value="Topical">Topical</option>
+                                    <option value="Injection">Injection</option>
+                                </select>
+                                    
+
+                            </div>
+                            <div className='input_rows'>
+                                <input placeholder='Medicine Name' id='medicine_name'
+                                ref={this.medicine_input}></input>
+
+                            </div>
+                            {/* <div className='date'>
+                                <p>xx/xx/xxxx</p>
+
+                            </div> */}
+                            <div className="add_button">
+                                <button id='add_button_medicine'
+                                onClick={this.handleClickMedicine}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                        
+
+
+                        {tempMedicine()}
+
+                </div>
+                    )
+                    
+                }
+        }
+
+        // Medicine Rendering section done
+
 
         //the html content
         return(
@@ -1612,60 +1811,7 @@ class ViewPage extends Component{
                     <h2>Medicine:</h2>
 
                 </div>
-                <div className='dataarea'>
-                    <div className='input_entry'>
-                            <div className='labels'>
-                                <select name="medicines" id="medicine_type">
-                                    <option value="Tablet">Tablet</option>
-                                    <option value="Capsule">Capsule</option>
-                                    <option value="Syrup">Syrup</option>
-                                    <option value="Topical">Topical</option>
-                                    <option value="Injection">Injection</option>
-                                </select>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                                <input placeholder='Medicine Name' id='medicine_name'></input>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="add_button">
-                                <button id='add_button_medicine'>Add</button>
-
-                            </div>
-                            
-
-                        </div>
-                        
-
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Tablet</p>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                                <p>Medicine x</p>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="delete_button">
-                                <button className='delete_button_medicine'>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
-
-                </div>
+                            {medicineRender()}
                 
 
             </div>
