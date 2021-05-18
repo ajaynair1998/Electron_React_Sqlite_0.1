@@ -13,10 +13,16 @@ function Medicine(props)
                                 <p>{props.medicine}</p>
 
                             </div>
+                            
+                            <div className='frequency'>
+                                {props.frequency}
+                            </div>
+                            
                             <div className='date'>
                                 <p>{props.date}</p>
 
                             </div>
+                            
                             <div className="delete_button">
                                 <button id='delete_button_medicine'
                                 onClick={props.handleClickMedicine} 

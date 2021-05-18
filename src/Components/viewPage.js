@@ -31,6 +31,7 @@ let treatment_plan_element
 let treatment_element
 let medicine_type_element
 let medicine_element
+let frequency_element
 
 
 
@@ -54,6 +55,7 @@ class ViewPage extends Component{
         this.treatment_input=React.createRef()
         this.medicine_type_input=React.createRef()
         this.medicine_input=React.createRef()
+        this.frequency_input=React.createRef()
 
 
 
@@ -136,7 +138,7 @@ class ViewPage extends Component{
         treatment_element=this.treatment_input
         medicine_type_element=this.medicine_type_input
         medicine_element=this.medicine_input
-
+        frequency_element=this.frequency_input
 
     }
 
@@ -725,10 +727,11 @@ class ViewPage extends Component{
             {
                 let medicineTypeValue =medicine_type_element.current.value
                 let medicineValue=medicine_element.current.value
+                let frequencyValue=frequency_element.current.value
 
                 let data=this.state.data
 
-                let currentEntry = [[1,todaysDate,medicineTypeValue,medicineValue]]
+                let currentEntry = [[1,todaysDate,medicineTypeValue,medicineValue,frequencyValue]]
                 data.Medicines=JSON.stringify(currentEntry)
 
                 this.setState(prevState =>
@@ -744,12 +747,13 @@ class ViewPage extends Component{
                 // get the values from input fields
                 let medicineTypeValue =medicine_type_element.current.value
                 let medicineValue=medicine_element.current.value
+                let frequencyValue=frequency_element.current.value
 
                 // get current entries
                 let data=this.state.data
 
                 let entries=eval(data.Medicines)
-                let currentEntry = [entries.length+1,todaysDate,medicineTypeValue,medicineValue]
+                let currentEntry = [entries.length+1,todaysDate,medicineTypeValue,medicineValue,frequencyValue]
                 
                 // add new entry to first position
                 entries.unshift(currentEntry)
@@ -1425,6 +1429,10 @@ class ViewPage extends Component{
                                 ref={this.medicine_input}></input>
 
                             </div>
+                            <div className='frequency'>
+                                <input placeholder='Enter the frequency Here'
+                                ref={this.frequency_input}></input>
+                            </div>
                             {/* <div className='date'>
                                 <p>xx/xx/xxxx</p>
 
@@ -1455,7 +1463,8 @@ class ViewPage extends Component{
                             {
                                 return (
                                     <Medicine key={item[0]} index={item[0]} date={item[1]} medicinetype={item[2]} 
-                                        medicine={item[3]} handleClickMedicine={this.handleClickMedicine} />
+                                        medicine={item[3]} handleClickMedicine={this.handleClickMedicine}
+                                        frequency={item[4]} />
                                 )
                             })
                         
@@ -1479,6 +1488,10 @@ class ViewPage extends Component{
                                 <input placeholder='Medicine Name' id='medicine_name'
                                 ref={this.medicine_input}></input>
 
+                            </div>
+                            <div className='frequency'>
+                                <input placeholder='Enter the frequency Here'
+                                ref={this.frequency_input}></input>
                             </div>
                             {/* <div className='date'>
                                 <p>xx/xx/xxxx</p>
