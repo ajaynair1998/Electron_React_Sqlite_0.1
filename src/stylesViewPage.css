@@ -1124,7 +1124,7 @@
 /* Follow Up Section */
 
 
-#view #diagnosis{
+#view #followup{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -1134,7 +1134,7 @@
 
 }
 
-#view #diagnosis .dataarea{
+#view #followup .dataarea{
 
     height:300px;
     border-style: solid;
@@ -1151,7 +1151,7 @@
 
 }
 
-#view #diagnosis .dataarea .input_entry{
+#view #followup .dataarea .input_entry{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -1160,32 +1160,32 @@
     border-width: 1px;
     padding: 5px;
 }
-#view #diagnosis .dataarea .input_entry .labels{
+#view #followup .dataarea .input_entry .labels{
     display: flex;
     flex-direction: column;
     gap:10px;
     justify-content: center;
 
 }
-#view #diagnosis .dataarea .input_entry .input_rows{
+#view #followup .dataarea .input_entry .input_rows{
     display: flex;
     flex-direction: column;
     gap:10px;
 
 }
 
-#view #diagnosis .dataarea .input_entry .date{
+#view #followup .dataarea .input_entry .date{
     display: flex;
     align-items: center;
 }
 
-#view #diagnosis .dataarea .input_entry .add_button{
+#view #followup .dataarea .input_entry .add_button{
     display: flex;
     align-items: center;
 }
 
 
-#view #diagnosis .dataarea .single_entry{
+#view #followup .dataarea .single_entry{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -1194,7 +1194,7 @@
     border-width: 1px;
     padding: 5px;
 }
-#view #diagnosis .dataarea .single_entry .labels{
+#view #followup .dataarea .single_entry .labels{
     display: flex;
     flex-direction: column;
     gap:10px;
@@ -1202,19 +1202,19 @@
 
 }
 
-#view #diagnosis .dataarea .single_entry .input_rows{
+#view #followup .dataarea .single_entry .input_rows{
     display: flex;
     flex-direction: column;
     gap:10px;
     max-width: 25%;
 }
 
-#view #diagnosis .dataarea .single_entry .date{
+#view #followup .dataarea .single_entry .date{
     display: flex;
     align-items: center;
 }
 
-#view #diagnosis .dataarea .single_entry .delete_button{
+#view #followup .dataarea .single_entry .delete_button{
     display: flex;
     align-items: center;
 }

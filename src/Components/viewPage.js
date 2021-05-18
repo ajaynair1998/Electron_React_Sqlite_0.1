@@ -1823,7 +1823,7 @@ class ViewPage extends Component{
 
 
 
-            <div id='diagnosis'>
+            <div id='followup'>
                 <div className='label'>
                     <h2>Follow Up:</h2>
 
