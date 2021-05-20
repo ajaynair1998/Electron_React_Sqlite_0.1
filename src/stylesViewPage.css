@@ -1208,6 +1208,8 @@
     flex-direction: row;
     justify-content: space-between;
     gap:10px;
+    width:40%;
+    /* flex-grow: 2; */
     /* max-width: 25%; */
     /* background-color: #fff; */
 }

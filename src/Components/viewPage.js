@@ -9,6 +9,7 @@ import ClinicalDiagnosis from './viewPageComponents/clinicalDiagnosis'
 import Diagnosis from './viewPageComponents/diagnosis'
 import TreatmentPlan from './viewPageComponents/treatmentPlan'
 import Medicine from './viewPageComponents/medicine'
+import FollowUp from './viewPageComponents/followUp'
 
 
 
@@ -32,6 +33,8 @@ let treatment_element
 let medicine_type_element
 let medicine_element
 let frequency_element
+let follow_up_text_element
+let follow_up_date_element
 
 
 
@@ -56,6 +59,8 @@ class ViewPage extends Component{
         this.medicine_type_input=React.createRef()
         this.medicine_input=React.createRef()
         this.frequency_input=React.createRef()
+        this.follow_up_text_input=React.createRef()
+        this.follow_up_date_input=React.createRef()
 
 
 
@@ -89,6 +94,7 @@ class ViewPage extends Component{
         this.handleClickDiagnosis=this.handleClickDiagnosis.bind(this)
         this.handleClickTreatmentPlan=this.handleClickTreatmentPlan.bind(this)
         this.handleClickMedicine=this.handleClickMedicine.bind(this)
+        this.handleClickFollowUp=this.handleClickFollowUp.bind(this)
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -139,6 +145,8 @@ class ViewPage extends Component{
         medicine_type_element=this.medicine_type_input
         medicine_element=this.medicine_input
         frequency_element=this.frequency_input
+        follow_up_text_element=this.follow_up_text_input
+        follow_up_date_element=this.follow_up_date_input
 
     }
 
@@ -799,6 +807,91 @@ class ViewPage extends Component{
 
 
     // handleclicks for medicine Done----------------------------
+
+    // handleClicks for follow up -----
+
+    handleClickFollowUp(event)
+    {
+        // if add button is pressed
+        if(event.target.id === "add_button_follow_up")
+        {
+            // if there is no follow ups yet yet
+            if(this.state.data.Follow_Up === null)
+            {
+                let followUpTextValue =follow_up_text_element.current.value
+                let followUpDateValue=follow_up_date_element.current.value
+
+                let data=this.state.data
+
+                let currentEntry = [[1,todaysDate,followUpTextValue,followUpDateValue]]
+                data.Follow_Up=JSON.stringify(currentEntry)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+
+            }
+
+            // if there is existing Follow ups
+            else
+            {
+                // get the values from input fields
+                let followUpTextValue =follow_up_text_element.current.value
+                let followUpDateValue=follow_up_date_element.current.value
+
+                // get current entries
+                let data=this.state.data
+
+                let entries=eval(data.Follow_Up)
+                let currentEntry = [entries.length+1,todaysDate,followUpTextValue,followUpDateValue]
+                
+                // add new entry to first position
+                entries.unshift(currentEntry)
+
+                // convert to string  and add to state
+                data.Follow_Up=JSON.stringify(entries)
+
+                this.setState(prevState =>
+                    {
+                        return {...prevState,data:data}
+                    })
+            }
+        }
+
+        // if delete is pressed
+        else if(event.target.id === 'delete_button_follow_up')
+        {
+            
+            let data=this.state.data
+            let entries=eval(data.Follow_Up)
+            let index=event.target.className
+
+            entries=entries.filter(item =>
+                {
+                    if(item[0] != index)
+                    {
+                        return item
+                    }
+                })
+            
+            data.Follow_Up=JSON.stringify(entries)
+
+            this.setState(prevState =>
+                
+                {
+                    return {...prevState,data:data}
+                })
+
+
+        }
+
+    }
+
+
+
+
+    // handleclicks for follow up done ---------
 
     // handleChange for textAreas
 
@@ -1516,7 +1609,107 @@ class ViewPage extends Component{
                 }
         }
 
-        // Medicine Rendering section done
+        // Medicine Rendering section done ------------------------------------
+
+        // Follow Up Rendering section start ------------------------------
+
+
+        let followUpRender=() =>
+        {   
+            // if there is no Follow ups yet yet
+                if(this.state.data.Follow_Up === null)
+                {
+
+                   
+                    return(
+                        <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <p>New:</p>
+
+                            </div>
+                            <div className='input_rows'>
+                                <input type='text' placeholder='Description' className='follow_up_input_text'
+                                ref={this.follow_up_text_input}></input>
+                                <input type='date' placeholder='Add Diagnosis' className='follow_up_input_date'
+                                ref={this.follow_up_date_input}></input>
+
+                            </div>
+                            
+                            <div className="add_button">
+                                <button id='add_button_follow_up'
+                                onClick={this.handleClickFollowUp}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                        
+                </div>
+
+
+                        
+
+                    )
+
+                }
+
+                else
+                {
+                     // first Make a temporary variable hold all the already entered Components
+                    let tempFollowUp= () =>
+                    {
+
+                        
+                        let followups=eval(this.state.data.Follow_Up)
+                        return followups=followups.map(item =>
+                            {
+                                return (
+                                    <FollowUp key={item[0]} index={item[0]} date={item[1]} followuptext={item[2]} 
+                                        followupdate={item[3]} handleClickFollowUp={this.handleClickFollowUp} />
+                                )
+                            })
+                        
+                    }
+                    return (
+
+                        <div className='dataarea'>
+                        <div className='input_entry'>
+                                <div className='labels'>
+                                    <p>New:</p>
+    
+                                </div>
+                                <div className='input_rows'>
+                                    <input type='text' placeholder='Description' className='follow_up_input_text'
+                                    ref={this.follow_up_text_input}></input>
+                                    <input type='date' placeholder='Add Diagnosis' className='follow_up_input_date'
+                                    ref={this.follow_up_date_input}></input>
+    
+                                </div>
+                                
+                                <div className="add_button">
+                                    <button id='add_button_follow_up'
+                                    onClick={this.handleClickFollowUp}>Add</button>
+    
+                                </div>
+                                
+    
+                            </div>
+                            
+    
+    
+                            {tempFollowUp()}
+    
+                    </div>
+                    )
+                    
+                }
+        }
+
+
+
+        // follow up rendering section done --------------------------
+
 
 
         //the html content
@@ -1841,49 +2034,7 @@ class ViewPage extends Component{
                     <h2>Follow Up:</h2>
 
                 </div>
-                <div className='dataarea'>
-                    <div className='input_entry'>
-                            <div className='labels'>
-                                <p>New:</p>
-
-                            </div>
-                            <div className='input_rows'>
-                                <input type='text' placeholder='Description' className='follow_up_input_text'></input>
-                                <input type='date' placeholder='Add Diagnosis' className='follow_up_input_date'></input>
-
-                            </div>
-                            
-                            <div className="add_button">
-                                <button id='add_button_follow_up'>Add</button>
-
-                            </div>
-                            
-
-                        </div>
-                        
-
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Date:</p>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                                <p className='follow_up_text'>Desciption about the follow up</p>
-                               <p className='follow_up_date'>xx/xx/xxxx</p>
-
-                            </div>
-                            
-                            <div className="delete_button">
-                                <button className='delete_button_follow_up'>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
-
-                </div>
+                {followUpRender()}
                 
 
             </div>
