@@ -1848,7 +1848,8 @@ class ViewPage extends Component{
 
                             </div>
                             <div className='input_rows'>
-                                <input type='date' placeholder='Add Diagnosis'></input>
+                                <input type='text' placeholder='Description' className='follow_up_input_text'></input>
+                                <input type='date' placeholder='Add Diagnosis' className='follow_up_input_date'></input>
 
                             </div>
                             
@@ -1869,7 +1870,8 @@ class ViewPage extends Component{
 
                             </div>
                             <div className='input_rows'>
-                               <p>xx/xx/xxxx</p>
+                                <p className='follow_up_text'>Desciption about the follow up</p>
+                               <p className='follow_up_date'>xx/xx/xxxx</p>
 
                             </div>
                             
