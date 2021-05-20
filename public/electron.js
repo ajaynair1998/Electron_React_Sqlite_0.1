@@ -12,12 +12,14 @@ const isDev = require('electron-is-dev');
 let mainWindow;
 
 //preload.js doesnt have access to window object if contextIsolation is true
+// webSecurity == allows us to open local files
 //VERY IMPORTANT!!!
 //USE Preload.js to pass in ipc Renderer to react
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 900, height: 680,webPreferences:{preload:path.join(__dirname,'preload'),nodeIntegration: false,
   contextIsolation: false,
+  webSecurity:false,
   }});
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', () => mainWindow = null);

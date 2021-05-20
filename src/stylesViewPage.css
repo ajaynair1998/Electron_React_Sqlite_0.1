@@ -793,6 +793,14 @@
 
 }
 
+#view #investigation .dataarea .single_entry .input_rows #open_investigation_file{
+    text-decoration: none!important;
+    background-color: aliceblue;
+    color: black;
+    padding: 2px;
+    border-radius: 4px;
+}
+
 
 #view #investigation .dataarea .single_entry .date{
     display: flex;

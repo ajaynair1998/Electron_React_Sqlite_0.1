@@ -10,6 +10,7 @@ import Diagnosis from './viewPageComponents/diagnosis'
 import TreatmentPlan from './viewPageComponents/treatmentPlan'
 import Medicine from './viewPageComponents/medicine'
 import FollowUp from './viewPageComponents/followUp'
+import Investigation from './viewPageComponents/investigation'
 
 
 
@@ -35,6 +36,8 @@ let medicine_element
 let frequency_element
 let follow_up_text_element
 let follow_up_date_element
+let investigation_file_element
+let investigation_type_element
 
 
 
@@ -61,6 +64,8 @@ class ViewPage extends Component{
         this.frequency_input=React.createRef()
         this.follow_up_text_input=React.createRef()
         this.follow_up_date_input=React.createRef()
+        this.investigation_file_input=React.createRef()
+        this.investigation_type_input=React.createRef()
 
 
 
@@ -95,6 +100,8 @@ class ViewPage extends Component{
         this.handleClickTreatmentPlan=this.handleClickTreatmentPlan.bind(this)
         this.handleClickMedicine=this.handleClickMedicine.bind(this)
         this.handleClickFollowUp=this.handleClickFollowUp.bind(this)
+        this.handleClickInvestigation=this.handleClickInvestigation.bind(this)
+        
 
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
@@ -147,6 +154,8 @@ class ViewPage extends Component{
         frequency_element=this.frequency_input
         follow_up_text_element=this.follow_up_text_input
         follow_up_date_element=this.follow_up_date_input
+        investigation_file_element=this.investigation_file_input
+        investigation_type_element=this.investigation_type_input
 
     }
 
@@ -892,6 +901,95 @@ class ViewPage extends Component{
 
 
     // handleclicks for follow up done ---------
+
+
+    // HandleClicks for investigation start ------------
+
+    handleClickInvestigation(event)
+    {
+          // if add button is pressed
+          if(event.target.id === "add_button_investigation")
+          {
+              // if there is no Investigation yet
+              if(this.state.data.Investigation=== null)
+              {
+                  let investigationTypeValue=investigation_type_element.current.value
+                  let investigationValue =investigation_file_element.current.files[0].path
+                  
+            
+                  let data=this.state.data
+  
+                  let currentEntry = [[1,todaysDate,investigationTypeValue,investigationValue]]
+                  data.Investigation=JSON.stringify(currentEntry)
+  
+                  this.setState(prevState =>
+                      {
+                          return {...prevState,data:data}
+                      })
+  
+              }
+  
+              // if there is existing investigations
+              else
+              {
+                  // get the values from input fields
+                  let investigationTypeValue=investigation_type_element.current.value
+                  let investigationValue =investigation_file_element.current.files[0].path
+                  
+  
+                  // get current entries
+                  let data=this.state.data
+  
+                  let entries=eval(data.Investigation)
+                  let currentEntry = [entries.length+1,todaysDate,investigationTypeValue,investigationValue]
+                  
+                  // add new entry to first position
+                  entries.unshift(currentEntry)
+  
+                  // convert to string  and add to state
+                  data.Investigation=JSON.stringify(entries)
+  
+                  this.setState(prevState =>
+                      {
+                          return {...prevState,data:data}
+                      })
+              }
+          }
+  
+          // if delete is pressed
+          else if(event.target.id === 'delete_button_investigation')
+          {
+              let data=this.state.data
+              let entries=eval(data.Investigation)
+              let index=event.target.className
+  
+              entries=entries.filter(item =>
+                  {
+                      if(item[0] != index)
+                      {
+                          return item
+                      }
+                  })
+              
+              data.Investigation=JSON.stringify(entries)
+  
+              this.setState(prevState =>
+                  
+                  {
+                      return {...prevState,data:data}
+                  })
+  
+  
+          }
+
+        
+  
+    }
+
+
+
+
+    // handleClicks for investigation done  ------------
 
     // handleChange for textAreas
 
@@ -1710,6 +1808,116 @@ class ViewPage extends Component{
 
         // follow up rendering section done --------------------------
 
+        // Startgin investigation rendering section -----------------
+
+        let investigationRender=() =>
+        {   
+            // if there is no investigations yet 
+                if(this.state.data.Investigation === null)
+                {
+
+                   
+                    return(
+                        <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <select name="investigations" id="investigations"
+                                ref={this.investigation_type_input}>
+                                    <option value="Blood">Blood</option>
+                                    <option value="X-Ray">X-Ray</option>
+                                    <option value="CT">CT</option>
+                                    <option value="MRI">MRI</option>
+                                    <option value="Ultrasound">Ultrasound</option>
+                                </select>
+                                    
+
+                            </div>
+                            <div className='input_rows'>
+                                {/* <button id='select_file'>Select File</button> */}
+                                <input id ='select_file' type='file'
+                                ref={this.investigation_file_input}></input>
+
+                            </div>
+                            
+                            <div className="add_button">
+                                <button id='add_button_investigation'
+                                onClick={this.handleClickInvestigation}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                </div>
+                        
+
+
+                        
+
+                    )
+
+                }
+
+                else
+                {
+                     // first Make a temporary variable hold all the already entered Components
+                    let tempInvestigations= () =>
+                    {
+
+                        
+                        let investigations=eval(this.state.data.Investigation)
+                        return investigations=investigations.map(item =>
+                            {
+                                return (
+                                    <Investigation key={item[0]} index={item[0]} date={item[1]} investigationtype={item[2]} 
+                                        handleClickInvestigation={this.handleClickInvestigation}
+                                        href={item[3]} />
+                                )
+                            })
+                        
+                    }
+                    return (
+
+                        <div className='dataarea'>
+                    <div className='input_entry'>
+                            <div className='labels'>
+                                <select name="investigations" id="investigations"
+                                ref={this.investigation_type_input}>
+                                    <option value="Blood">Blood</option>
+                                    <option value="X-Ray">X-Ray</option>
+                                    <option value="CT">CT</option>
+                                    <option value="MRI">MRI</option>
+                                    <option value="Ultrasound">Ultrasound</option>
+                                </select>
+                                    
+
+                            </div>
+                            <div className='input_rows'>
+                                {/* <button id='select_file'>Select File</button> */}
+                                <input id ='select_file' type='file'
+                                ref={this.investigation_file_input}></input>
+
+                            </div>
+                            
+                            <div className="add_button">
+                                <button id='add_button_investigation'
+                                onClick={this.handleClickInvestigation}>Add</button>
+
+                            </div>
+                            
+
+                        </div>
+                        {tempInvestigations()}
+                </div>
+                    )
+                    
+                }
+        }
+
+
+
+        // Investigation Rendering section end --------------------------
+
+
 
 
         //the html content
@@ -1913,61 +2121,8 @@ class ViewPage extends Component{
                     <h2>Investigation:</h2>
 
                 </div>
-                <div className='dataarea'>
-                    <div className='input_entry'>
-                            <div className='labels'>
-                                <select name="investigations" id="investigations">
-                                    <option value="Blood">Blood</option>
-                                    <option value="X-Ray">X-Ray</option>
-                                    <option value="CT">CT</option>
-                                    <option value="MRI">MRI</option>
-                                    <option value="Ultrasound">Ultrasound</option>
-                                </select>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                                <button id='select_file'>Select File</button>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="add_button">
-                                <button id='add_button_investigation'>Add</button>
-
-                            </div>
-                            
-
-                        </div>
-                        
-
-
-                        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>Blood</p>
-                                    
-
-                            </div>
-                            <div className='input_rows'>
-                                <button >Open File</button>
-
-                            </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
-                            <div className="delete_button">
-                                <button className='delete_button_investigation'>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
-
-                </div>
                 
+                {investigationRender()}
 
             </div>
 
