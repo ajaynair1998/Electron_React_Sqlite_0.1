@@ -91,7 +91,7 @@ class ViewPage extends Component{
 
 
         //functions custom
-        this.handleClick=this.handleClick.bind(this)
+        this.handleClickGoTo=this.handleClickGoTo.bind(this)
         this.handleClickChiefComplaint=this.handleClickChiefComplaint.bind(this)
         this.handleClickGeneralExamination=this.handleClickGeneralExamination.bind(this)
         this.handleClickLocalExamination=this.handleClickLocalExamination.bind(this)
@@ -102,7 +102,10 @@ class ViewPage extends Component{
         this.handleClickFollowUp=this.handleClickFollowUp.bind(this)
         this.handleClickInvestigation=this.handleClickInvestigation.bind(this)
         
-
+        // Main save button HandleClick
+        this.handleClickSaveAllButton=this.handleClickSaveAllButton.bind(this)
+        
+        
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
         this.handleChangeTextAreas=this.handleChangeTextAreas.bind(this)
@@ -123,16 +126,18 @@ class ViewPage extends Component{
 
 
         // on Recieving the ProfileData
-        // window.ipcRenderer.on('Data-From-Electron',(event,args) =>
-        // {
-        //     this.setState(prevState =>
-        //         {
-        //             return {loading:false,data:args[0]}
-        //         })
+        window.ipcRenderer.on('Data-From-Electron',(event,args) =>
+        {
+            
+
+            this.setState(prevState =>
+                {
+                    return {loading:false,data:args[0]}
+                })
                   
-        // })
+        })
         
-        // 
+        
 
 
 
@@ -158,11 +163,27 @@ class ViewPage extends Component{
         investigation_type_element=this.investigation_type_input
 
     }
+    
 
-    handleClick(event){
-        // show state when GoTo is pressed for Devolopment
-        if(event.target.id ==='GoToButton') console.log(this.state)
+    // Save All handleClick
+    handleClickSaveAllButton(event)
+    {
+        // for debugging)
+        console.log(this.state.data)
+        
+        // send edited data to ipcMain 
 
+        window.ipcRenderer.send('Edit-Profile-View-Page',this.state.data)
+
+        window.ipcRenderer.on('Reply-Editing-Profile-View-Page',(event,args) =>
+        {
+            console.log(args)
+        })
+
+    }
+
+    handleClickGoTo(event){
+        
 
 
         
@@ -201,7 +222,7 @@ class ViewPage extends Component{
                 let date = todaysDate
                 
                 // taking the entry
-                entryone=JSON.stringify(['1',date,chiefComplaint,historyOfComplaint])
+                entryone=JSON.stringify([[1,date,chiefComplaint,historyOfComplaint]])
 
                 let data=this.state.data
                 data.Chief_Complaint=entryone
@@ -1052,12 +1073,9 @@ class ViewPage extends Component{
                                 <input placeholder='History of This Complaint' id='history_of_complaint_input' ref={this.complaint_history_input}></input>
 
                             </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
+                            
                             <div className="add_button">
-                                <button id='add_button_chief_Complaint' onclick={this.handleClickChiefComplaint}>Add</button>
+                                <button id='add_button_chief_Complaint' onClick={this.handleClickChiefComplaint}>Add</button>
 
                             </div>
                             <div>
@@ -1967,10 +1985,10 @@ class ViewPage extends Component{
         <div id='contents'>
             <div id='controls'>
                 
-                    <h2 onClick={this.handleClick} id='GoToButton'> Go To </h2>
+                    <h2 onClick={this.handleClickGoTo} id='GoToButton'> Go To </h2>
                 
                 
-                    <h2 id='save_button'>Save</h2>
+                    <h2 id='save_button' onClick={this.handleClickSaveAllButton}>Save</h2>
                
             </div>
             <div id='main'>

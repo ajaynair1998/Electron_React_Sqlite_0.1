@@ -142,7 +142,10 @@ ipcMain.on('View-Page-Data',(event,args) =>
   let Patient_id=args
 
   //sql query for getting the row
-  let getProfileDataSql=`SELECT * from Patient_Data WHERE Patient_id=${Patient_id}`
+  let getProfileDataSql=`SELECT Chief_Complaint,Past_Medical_History,
+    Past_Dental_History,Drug_Allergy,General_Examination,
+    Local_Examination,Clinical_Diagnosis,Investigation,
+    Treatment_Plan,Medicines,Diagnosis,Follow_Up from Patient_Data WHERE Patient_id=${Patient_id}`
 
   database.all(getProfileDataSql,(err,row) =>
   {
@@ -151,12 +154,19 @@ ipcMain.on('View-Page-Data',(event,args) =>
       console.log(err.message)
     }
     else{
-
+      console.log(row)
 
       // send the View Page Data to React
       event.reply('Data-From-Electron',row)
     }
   })
+})
+
+ipcMain.on('Edit-Profile-View-Page',(event,args)=>
+{
+  console.log(args)
+
+  event.reply('Reply-Editing-Profile-View-Page','done')
 })
 
 
