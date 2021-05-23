@@ -2030,7 +2030,7 @@ class ViewPage extends Component{
                     <div className='dataarea'>
                     <textarea id='Past_Medical_History' placeholder="No Past medical History Yet" onChange={this.handleChangeTextAreas}
                     defaultValue={this.state.data.Past_Medical_History ? this.state.data.Past_Medical_History : ''}></textarea>
-                    <button>Edit</button>
+                    
                     </div>       
                 </div>
 
@@ -2053,7 +2053,7 @@ class ViewPage extends Component{
                         <div className='dataarea'>
                         <textarea id="Past_Dental_History" placeholder="No Past Dental History" onChange={this.handleChangeTextAreas}
                         defaultValue={this.state.data.Past_Dental_History ? this.state.data.Past_Dental_History : ''}></textarea>
-                        <button>Edit</button>
+                        
                         </div>       
                     </div>
 

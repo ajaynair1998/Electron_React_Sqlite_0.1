@@ -542,6 +542,7 @@
   flex-direction: column;
   align-items: center;
   gap:30px;
+  overflow-y: scroll;
 }
 
 #Records .patient{
