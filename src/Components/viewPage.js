@@ -39,7 +39,8 @@ let follow_up_date_element
 let investigation_file_element
 let investigation_type_element
 
-
+// the patient id of cuurent page
+let patientId
 
 class ViewPage extends Component{
     constructor(props){
@@ -66,6 +67,7 @@ class ViewPage extends Component{
         this.follow_up_date_input=React.createRef()
         this.investigation_file_input=React.createRef()
         this.investigation_type_input=React.createRef()
+        
 
 
 
@@ -109,6 +111,7 @@ class ViewPage extends Component{
         // handlechange functions for text areas
         // Past medical History,Past Dental History,Drug Allergy
         this.handleChangeTextAreas=this.handleChangeTextAreas.bind(this)
+ 
         
 
     }
@@ -118,7 +121,7 @@ class ViewPage extends Component{
     {
 
         // getting the patient id from the records page
-        const {patientId} =this.props.match.params
+        patientId =this.props.match.params.patientId
         
         // sending this id to electron so that electron can send back the viewPage Profile Data 
         // for the Patient
@@ -129,16 +132,13 @@ class ViewPage extends Component{
         window.ipcRenderer.on('Data-From-Electron',(event,args) =>
         {
             
-
             this.setState(prevState =>
                 {
                     return {loading:false,data:args[0]}
                 })
-                  
         })
-        
-        
 
+        
 
 
         // we can assign refs only inside lifecycle methods
@@ -161,6 +161,11 @@ class ViewPage extends Component{
         follow_up_date_element=this.follow_up_date_input
         investigation_file_element=this.investigation_file_input
         investigation_type_element=this.investigation_type_input
+        
+
+
+
+
 
     }
     
@@ -172,8 +177,8 @@ class ViewPage extends Component{
         console.log(this.state.data)
         
         // send edited data to ipcMain 
-
-        window.ipcRenderer.send('Edit-Profile-View-Page',this.state.data)
+       
+        window.ipcRenderer.send('Edit-Profile-View-Page',[patientId,this.state.data])
 
         window.ipcRenderer.on('Reply-Editing-Profile-View-Page',(event,args) =>
         {
@@ -1035,6 +1040,8 @@ class ViewPage extends Component{
         
     }
 
+
+   
     // textareas sections done -----------------------------------------------------------------------
 
 
@@ -2021,7 +2028,8 @@ class ViewPage extends Component{
                     <h2>Past medical History:</h2>
                     </div>
                     <div className='dataarea'>
-                    <textarea id='Past_Medical_History' placeholder="No Past medical History Yet" onChange={this.handleChangeTextAreas}></textarea>
+                    <textarea id='Past_Medical_History' placeholder="No Past medical History Yet" onChange={this.handleChangeTextAreas}
+                    defaultValue={this.state.data.Past_Medical_History ? this.state.data.Past_Medical_History : ''}></textarea>
                     <button>Edit</button>
                     </div>       
                 </div>
@@ -2043,7 +2051,8 @@ class ViewPage extends Component{
                         <h2>Past Dental History:</h2>
                         </div>
                         <div className='dataarea'>
-                        <textarea id="Past_Dental_History" placeholder="No Past Dental History" onChange={this.handleChangeTextAreas}></textarea>
+                        <textarea id="Past_Dental_History" placeholder="No Past Dental History" onChange={this.handleChangeTextAreas}
+                        defaultValue={this.state.data.Past_Dental_History ? this.state.data.Past_Dental_History : ''}></textarea>
                         <button>Edit</button>
                         </div>       
                     </div>
@@ -2064,7 +2073,8 @@ class ViewPage extends Component{
                             <button className='no_button'>No</button>
                             </div> --> */}
                             <div className='drug_allergy_input'>
-                            <textarea id='Drug_Allergy' placeholder="No Drug Allergies Found Yet" onChange={this.handleChangeTextAreas}></textarea>
+                            <textarea id='Drug_Allergy' placeholder="No Drug Allergies Found Yet" onChange={this.handleChangeTextAreas}
+                            defaultValue={this.state.data.Drug_Allergy ? this.state.data.Drug_Allergy: ''}></textarea>
                             </div>
                         </div>
 

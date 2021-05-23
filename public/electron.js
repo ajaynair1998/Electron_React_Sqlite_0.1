@@ -162,10 +162,63 @@ ipcMain.on('View-Page-Data',(event,args) =>
   })
 })
 
+
+
+// Getting the new Edited data back from Frontend
 ipcMain.on('Edit-Profile-View-Page',(event,args)=>
 {
-  console.log(args)
+  console.log(args[0],args[1])
 
+  // convert the double quotes to two double quotes to escape
+  let keys=Object.keys(args[1])
+  let values=Object.values(args[1])
+
+  let keys_in_double_quotes=keys.filter(item =>
+    {
+      if(args[1][item]=== null)
+      {
+
+      }
+      else
+      {
+      return `${item}`
+      }
+    })
+
+    console.log(keys_in_double_quotes)
+    let values_in_double_quotes=values.filter(item =>
+      {
+        if(item === null)
+        {
+
+        }
+        else
+        {
+          // let temp= item.replace(/"/g,"'").slice(1,item.length-1)
+          let temp=item
+          return `${temp}`
+        }
+      })
+      // add single quotes to wrap each value
+    
+      let afterProcessing=[]
+      keys_in_double_quotes.forEach((item,index) =>
+      {
+        afterProcessing.push(item +"=" + "'" + values_in_double_quotes[index] + "'")
+      })
+      
+      let queryToSaveEditedView =`UPDATE Patient_Data SET ${afterProcessing.toString()} WHERE Patient_id=${args[0]}`
+
+      console.log(queryToSaveEditedView)
+      database.all(queryToSaveEditedView,(err,rows) =>
+      {
+        if(err)
+        {
+          console.log(err.message)
+        }
+      })
+
+  
   event.reply('Reply-Editing-Profile-View-Page','done')
 })
 
