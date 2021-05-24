@@ -3,7 +3,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const sqlite3=require('sqlite3')
 const { ipcMain } = require('electron');
-const {Notification}=require('electron')
+
 
 const path = require('path');
 const url = require('url');
@@ -11,13 +11,20 @@ const isDev = require('electron-is-dev');
 
 let mainWindow;
 
+
 //preload.js doesnt have access to window object if contextIsolation is true
 // webSecurity == allows us to open local files
 //VERY IMPORTANT!!!
 //USE Preload.js to pass in ipc Renderer to react
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 900, height: 680,webPreferences:{preload:path.join(__dirname,'preload'),nodeIntegration: false,
+
+  // get size of the screen
+  const display =electron.screen.getPrimaryDisplay()
+  const displaySize=display.workAreaSize
+
+
+  mainWindow = new BrowserWindow({width: displaySize.width, height: displaySize.height,resizable:false,webPreferences:{preload:path.join(__dirname,'preload'),nodeIntegration: false,
   contextIsolation: false,
   webSecurity:false,
   }});
