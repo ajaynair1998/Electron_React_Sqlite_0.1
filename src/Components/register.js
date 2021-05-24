@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 
 
 
@@ -103,37 +104,37 @@ class Register extends Component{
             <div id="Register">
         <nav className="navbar">
           <div className="navbar__container">
-            <a href="/" id="navbar__logo">
+            <Link to="/" id="navbar__logo">
               Patient Database
-            </a>
+            </Link>
             <div className="navbar__toggle" id="mobile-menu">
               <span className="bar"></span> <span class="bar"></span>
               <span className="bar"></span>
             </div>
             <ul className="navbar__menu">
               <li className="navbar__item">
-                <a href="/" className="navbar__links" id="home-page">
+                <Link to="/" className="navbar__links" id="home-page">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="navbar__item">
-                <a href="/Register" className="navbar__links" id="about-page">
+                <Link to="/Register" className="navbar__links" id="about-page">
                   Register
-                </a>
+                </Link>
               </li>
               <li className="navbar__item">
-                <a
-                  href="/Records"
+                <Link
+                  to="/Records"
                   className="navbar__links"
                   id="services-page"
                 >
                   Records
-                </a>
+                </Link>
               </li>
               <li className="navbar__btn">
-                <a href="#sign-up" className="button" id="signup">
+                <Link to="/" className="button" id="signup">
                   Sign Out
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

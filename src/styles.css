@@ -534,6 +534,11 @@
   grid-area: a;
 
 }
+/* for the react -router link element */
+#Records #chart .patient a{
+  text-decoration: none!important;
+  color: black;
+}
 
 #Records #chart{
   grid-area:b;
