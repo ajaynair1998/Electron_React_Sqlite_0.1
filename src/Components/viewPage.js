@@ -1130,10 +1130,7 @@ class ViewPage extends Component{
                                 <input placeholder='History of This Complaint' className='history_of_complaint' ref={this.complaint_history_input}></input>
 
                             </div>
-                            <div className='date'>
-                                <p>xx/xx/xxxx</p>
-
-                            </div>
+                            
                             <div className="add_button">
                                 <button id='add_button_chief_Complaint' onClick={this.handleClickChiefComplaint}>Add</button>
 

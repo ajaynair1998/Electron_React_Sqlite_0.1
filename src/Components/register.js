@@ -80,15 +80,13 @@ class Register extends Component{
       if(id=='Submit')
       {
         //if the button that was pressed is submit
+        window.ipcRenderer.send('form-data',this.state)
 
-        //confirm button
-        if(prompt()){
-          window.ipcRenderer.send('form-data',this.state)
+        
+        
          
-        }
-        else{
-          //do nothing
-        }
+        
+        
        
       }
     }
@@ -328,10 +326,10 @@ class Register extends Component{
 }
 
 //prompt when submit is pressed
-function prompt(){
-  let temp=window.confirm('The form will be sumbitted, Check before continuing')
-  return temp
-}
+// function prompt(){
+//   let temp=window.confirm('The form will be sumbitted, Check before continuing')
+//   return temp
+// }
 
 
 
