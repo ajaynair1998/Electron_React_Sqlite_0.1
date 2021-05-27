@@ -306,21 +306,7 @@
   column-gap: 400px;
   row-gap: 28px;
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    
-  
-  
-  
-  
-}
+  }
 
 #Register .data_field{
   
@@ -358,19 +344,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap:30px;
 }
 
 
 #Register #Picture_Container #Image_and_Button #Capture_Image_Button{
   height:50px;
+  width:150px;
 
 
 }
 
 #Register #avatar{
-  width: 150px;
-  height: 150px;
+  width: 380px;
+  height: 285px;
   border-radius: 50%;
 }
 

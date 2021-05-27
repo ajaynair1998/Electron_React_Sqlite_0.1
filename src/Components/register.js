@@ -1,9 +1,12 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
+import Webcam from 'react-webcam'
 
-
-
+// Creating a date variable
 const date=new Date
+
+// creating an element to hold the picture referance
+let picture_element
 
 class Register extends Component{
 
@@ -13,11 +16,19 @@ class Register extends Component{
         this.state={'Nationality':'India','Gender':'Not Selected',"Marital_Status":'Not Selected',
         'Blood_Group':'Not Selected','Doctor_Name':'Dr Arun Babu','Purpose':'Consultation'}
 
+        // reference to picture 
+        this.picture_input=React.createRef()
+        
+        
+        
         //handle change when each form spaces are edited
         this.handleChange=this.handleChange.bind(this)
 
         //handle click if submit or loggout is pressed
         this.handleClick=this.handleClick.bind(this)
+
+        // handleCLick gor capturing scrrenshot
+        this.handleClickCaptureImage=this.handleClickCaptureImage.bind(this)
     }
 
     componentDidMount(){
@@ -25,6 +36,8 @@ class Register extends Component{
       //ipcRenderer testing
       // this.props.ipcRenderer.send('ping')
       
+      // connect the input referance to the element we declared
+      picture_element=this.picture_input
 
       // setting time and date at the time of load
       let time_field=document.getElementById('Time')
@@ -90,6 +103,16 @@ class Register extends Component{
        
       }
     }
+
+    handleClickCaptureImage(event)
+    {
+      event.preventDefault()
+      let imageSrc=picture_element.current.getScreenshot()
+    }
+
+
+    
+
     
     
     
@@ -147,19 +170,21 @@ class Register extends Component{
 
                 <div id='Picture_Container'>
                     <div id='Image_and_Button' className='data_field'>
-                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt='avatar' id='avatar'></img>
-                      <button id="Capture_Image_Button">Capture</button>
+                    <Webcam id='avatar'
+                        audio={false}
+                        height={720}
+                        ref={this.picture_input}
+                        screenshotFormat="image/jpeg"
+                        width={1280}
+                      
+                      />
+                      <button id="Capture_Image_Button"
+                      onClick={this.handleClickCaptureImage}>Capture</button>
 
                     </div>
                 </div>
                 
                
-                    
-                
-                
-                
-                
-                
                 {/* <!-- form body --> */}
                 <div class="form-container">
                     <div class='form-body'>
