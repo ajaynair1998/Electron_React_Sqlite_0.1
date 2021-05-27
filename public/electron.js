@@ -1,6 +1,8 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+let {dialog} =require('electron')
+
 const sqlite3=require('sqlite3')
 const { ipcMain } = require('electron');
 
@@ -45,6 +47,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
 
 
 //APPLICATION LOGIC AFTER THIS LINE
@@ -101,9 +104,18 @@ ipcMain.on('form-data',(event,args)=>
   database.all(query_to_insert,(err,rows)=>
   {
     if (err)
-      {console.log(err)}
+      {console.log(err)
+      
+      dialog.showMessageBox({message:'Something went wrong',button:['Okay'],
+      title:"ERROR",detail:err})
+
+      }
     else{
       console.log('successfully inserted Patient Data')
+
+      // alert in main window
+      dialog.showMessageBox({message:'Patient Registered Successfully!',button:['Okay'],
+      title:"SUCCESS!"})
     }
   })
   
