@@ -13,8 +13,8 @@ class Register extends Component{
     constructor(){
         super()
         //setting the default values as states early in advance
-        this.state={'Nationality':'India','Gender':'Not Selected',"Marital_Status":'Not Selected',
-        'Blood_Group':'Not Selected','Doctor_Name':'Dr Arun Babu','Purpose':'Consultation'}
+        this.state={data:{'Nationality':'India','Gender':'Not Selected',"Marital_Status":'Not Selected',
+        'Blood_Group':'Not Selected','Doctor_Name':'Dr Arun Babu','Purpose':'Consultation'},captureMode:true}
 
         // reference to picture 
         this.picture_input=React.createRef()
@@ -53,7 +53,7 @@ class Register extends Component{
 
       this.setState(prevState =>
         {
-          return {'Date':date_field.value,'Time':time_field.value}
+          return {data:{'Date':date_field.value,'Time':time_field.value}}
         })
 
       
@@ -69,14 +69,18 @@ class Register extends Component{
       //getting the id,name,value from the change event
       let {value,id} =event.target
       //adding these values to state so we send it to database
-      
+      let currentStateData=this.state.data
+
+      currentStateData[id]=value
+
       this.setState((prevstate) =>
       {
         
-        return  {[id]:value}
+        return  {...prevstate,data:currentStateData}
       })
 
-      console.log(this.state)
+      // for Debugging
+      // console.log(this.state)
       
       
       
@@ -92,22 +96,65 @@ class Register extends Component{
       
       if(id=='Submit')
       {
-        //if the button that was pressed is submit
-        window.ipcRenderer.send('form-data',this.state)
-
         
+          
+        // if we are not in capture mode we can save the existing image into our data property
+          if(this.state.captureMode===false)
+          {
+            let tempData=this.state.data
+            
+            // make a new property image and add our image to it
+            tempData.Image=this.state.image
+            this.setState(prevState =>
+              {
+                return {...prevState,data:tempData}
+              })
+          }
+         // If we are still in capture mode we dont have an image yet so we should change that field to null
+         else if(this.state.captureMode === true)
+         {
+           let tempData=this.state.data
+            
+            // make a new property image and make it null
+            tempData.Image=null
+            this.setState(prevState =>
+              {
+                return {...prevState,data:tempData}
+              })
+         }
         
+         // debugg mode
+        // console.log(this.state.data)
          
         
-        
+        //if the button that was pressed is submit
+        window.ipcRenderer.send('form-data',this.state.data)
        
       }
     }
 
     handleClickCaptureImage(event)
     {
-      event.preventDefault()
-      let imageSrc=picture_element.current.getScreenshot()
+      // if in capture mode
+      if(this.state.captureMode)
+      {
+              event.preventDefault()
+              let imageSrc=picture_element.current.getScreenshot()
+
+              this.setState(prevState =>
+                {
+                  return {...prevState,image:imageSrc,captureMode:false}
+                })
+      }
+
+      else
+      {
+        event.preventDefault()
+        this.setState(prevState =>
+          {
+            return {...prevState,image:null,captureMode:true}
+          })
+      }
     }
 
 
@@ -118,6 +165,42 @@ class Register extends Component{
     
     
     render(){
+
+      let ImageFieldRender =() =>
+      {
+        // if in capture mode
+        if(this.state.captureMode)
+        {
+          return(
+              <div id='Image_and_Button' className='data_field'>
+                    <Webcam id='avatar'
+                        audio={false}
+                        height={720}
+                        ref={this.picture_input}
+                        screenshotFormat="image/jpeg"
+                        width={1280}
+                      
+                      />
+                      <button id="Capture_Image_Button"
+                      onClick={this.handleClickCaptureImage}>Capture</button>
+
+                    </div>
+          )
+        }
+        // if not in capture mode
+        else if(this.state.captureMode === false)
+        {
+          return (
+            <div id='Image_and_Button' className='data_field'>
+                    <img src={this.state.image}  id='avatar'></img>
+                      <button id="Capture_Image_Button"
+                      onClick={this.handleClickCaptureImage}>Retake</button>
+
+                    </div>
+          )
+
+        }
+      }
       
         return(
 
@@ -169,19 +252,7 @@ class Register extends Component{
                 </div>
 
                 <div id='Picture_Container'>
-                    <div id='Image_and_Button' className='data_field'>
-                    <Webcam id='avatar'
-                        audio={false}
-                        height={720}
-                        ref={this.picture_input}
-                        screenshotFormat="image/jpeg"
-                        width={1280}
-                      
-                      />
-                      <button id="Capture_Image_Button"
-                      onClick={this.handleClickCaptureImage}>Capture</button>
-
-                    </div>
+                    {ImageFieldRender()}
                 </div>
                 
                

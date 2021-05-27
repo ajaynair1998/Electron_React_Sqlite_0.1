@@ -92,7 +92,9 @@ ipcMain.on('form-data',(event,args)=>
   
   //sql query to add values into database
   let query_to_insert=`INSERT INTO Patient_Data (${keys_in_double_quotes.toString()}) VALUES( ${values_in_double_quotes.toString()})`
-  console.log(query_to_insert)
+  
+  // debug statement
+  // console.log(query_to_insert)
 
 
   //now adding these values into the sqlite database
