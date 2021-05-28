@@ -245,7 +245,37 @@ ipcMain.on('Edit-Profile-View-Page',(event,args)=>
 
 
 
+// View Page Logic Ended -------------------------------------------------
 
+// Starting ProfilePage Logic
+
+ipcMain.on('Give-Profile-Data',(event,args) =>
+{
+ 
+  let patientId=args
+
+  let arrayOfKeys=["Image","Date","Time","Patient_id","Patient_Name","Nationality",
+                    "Age","DOB","Gender","Address","Blood_Group","Phone_Number","Mobile_Number",
+                    "Email","Marital_Status","Occupation","Doctor_Name","Purpose","Reffered_By"];
+            
+  // now change this into string form
+  let arrayOfKeysAsString = arrayOfKeys.toString()
+
+  // now write the sql query to retrieve this data
+  let sqlQuery= `SELECT ${arrayOfKeysAsString} FROM Patient_Data WHERE Patient_id=${patientId} `
+
+  database.all(sqlQuery,(err,rows) =>
+  {
+    if(err)
+    {
+      console.log(err.message)
+    }
+    else
+    {
+      event.reply('Profile-Data-From-Electron',rows)
+    }
+  })
+})
 
 
 

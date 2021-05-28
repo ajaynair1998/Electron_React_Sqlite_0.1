@@ -9,6 +9,7 @@ import Homepage from './Components/homePage';
 import Register from './Components/register'
 import Records from './Components/records'
 import ViewPage from './Components/viewPage'
+import ProfilePage from './Components/profilePage'
 import './styles.css';
 import './stylesViewPage.css'
 
@@ -28,7 +29,7 @@ class App extends Component{
     return(
       <Router>
       <Switch>
-         <Route exact path = "/" component = {Homepage} />
+         <Route exact path = "/" component = {ProfilePage} />
          <Route exact path = "/Register" component = {Register} />
          <Route exact path = "/Records" component = {Records} />
          <Route exact path = "/ViewPage/:patientId" component = {ViewPage} />
