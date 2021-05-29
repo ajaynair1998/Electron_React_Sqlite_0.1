@@ -12,7 +12,7 @@ class ProfilePage extends Component{
     constructor()
     {
         super()
-        this.state={mode:'viewMode'}
+        this.state={mode:'viewMode',loaded:false}
 
         // handleClicks
         this.handleClickSubmit=this.handleClickSubmit.bind(this)
@@ -30,7 +30,7 @@ class ProfilePage extends Component{
         {
             this.setState(prevState =>
                 {
-                    return {...prevState,data:args[0]}
+                    return {...prevState,data:args[0],loaded:true}
                 })
         })
 
@@ -102,7 +102,19 @@ class ProfilePage extends Component{
         
         
         // Main Section Rendering
-        
+        let mainSectionRender =() =>
+        {
+            if (this.state.loaded)
+            {
+                    // if in viewMode
+                    if(this.state.mode === 'viewMode')
+                    {
+                        return (
+                            <ViewMode data={this.state.data} />
+                        )
+                    }
+            }
+        } 
 
 
 
@@ -158,7 +170,7 @@ class ProfilePage extends Component{
 
                                 {/* Render Main view and edit Sections */}
 
-
+                            {mainSectionRender()}
 
 
 

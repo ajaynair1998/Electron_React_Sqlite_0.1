@@ -131,4 +131,69 @@
 }
 
 
-/* Main Section */
+/* Main Section  of view Mode*/
+#Profile #mainContainerViewMode{
+  background:#000;
+  background:linear-gradient(to right,#000,rgb(37, 36, 36));
+  height:1900px;
+  color: white;
+  padding-top:50px;
+}
+
+#Profile #mainContainerViewMode #contentContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background-color: aliceblue; */
+  padding-top: 100px;
+}
+
+#Profile #mainContainerViewMode #contentContainer #contents{
+
+  /* position: relative;
+  top:90px; */
+  /* background-color: rgb(62, 197, 118); */
+  display: grid;
+  grid-template-columns:  1fr 1fr ;
+  justify-items: left;
+  align-content: space-between;
+  column-gap: 400px;
+  row-gap: 28px;
+  /* background-color: aqua; */
+  
+  }
+
+#Profile #mainContainerViewMode #contentContainer #contents .data_field
+{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+#Profile #imageContainerViewMode{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+ #Profile #imageContainerViewMode #Image_and_Comment{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:20px;
+ }
+
+ #Profile #imageContainerViewMode #Image_and_Comment #avatar{
+    width: 380px;
+    height: 285px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 285px;
+    background-color: rgb(207, 219, 219);
+ }
+
+
+ /* Styling view mode done */
