@@ -53,7 +53,10 @@ class Register extends Component{
 
       this.setState(prevState =>
         {
-          return {data:{'Date':date_field.value,'Time':time_field.value}}
+          return {data:{'Date':date_field.value,'Time':time_field.value,'Nationality':'India',
+          'Gender':'Not Selected',"Marital_Status":'Not Selected',
+        'Blood_Group':'Not Selected','Doctor_Name':'Dr Arun Babu',
+        'Purpose':'Consultation'}}
         })
 
       
