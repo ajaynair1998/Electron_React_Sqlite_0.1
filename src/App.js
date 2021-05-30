@@ -29,10 +29,11 @@ class App extends Component{
     return(
       <Router>
       <Switch>
-         <Route exact path = "/" component = {ProfilePage} />
+         <Route exact path = "/" component = {Homepage} />
          <Route exact path = "/Register" component = {Register} />
          <Route exact path = "/Records" component = {Records} />
          <Route exact path = "/ViewPage/:patientId" component = {ViewPage} />
+         <Route exact path = "/Profile/:patientId" component = {ProfilePage} />
       </Switch>
       </Router>
     )

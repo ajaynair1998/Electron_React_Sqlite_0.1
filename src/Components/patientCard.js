@@ -10,6 +10,8 @@ function PatientCard(props)
                         {/* <div className='patient_button'> <button className={props.patientId}>Edit</button></div> */}
                         <div className='patient_button'> <button><Link 
                         to={`/ViewPage/${props.patientId}`}>View</Link></button></div>
+                        <div className='patient_button'> <button><Link 
+                        to={`/Profile/${props.patientId}`}>Profile</Link></button></div>
 
         </div>
     )

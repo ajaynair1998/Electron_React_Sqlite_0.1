@@ -22,7 +22,7 @@ class ProfilePage extends Component{
 
     componentDidMount()
     {
-        Patient_id =23
+        Patient_id =this.props.match.params.patientId
 
         // get the profile information from ipc main
         window.ipcRenderer.send('Give-Profile-Data',Patient_id)
