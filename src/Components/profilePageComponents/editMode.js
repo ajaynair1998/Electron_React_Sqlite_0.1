@@ -2,18 +2,26 @@ import React from 'react'
 
 import Webcam from 'react-webcam'
 
+// creating an element to hold the picture referance
+let picture_element
+
 class EditMode extends React.Component{
     constructor(props)
     {
         super()
         this.state={loaded:false}
 
+        this.picture_input=React.createRef()
+
         // custom functions
         this.handleChange=this.handleChange.bind(this)
+        this.handleClickCaptureImage=this.handleClickCaptureImage.bind(this)
     }
 
     componentDidMount()
     {
+        
+
         // add the passed on value from props to data
         this.setState(prevState =>
             {
@@ -39,8 +47,11 @@ class EditMode extends React.Component{
                     return {...prevState,captureMode:true}
                 })
         }
-        
 
+        // connect the input referance to the element we declared
+        picture_element=this.picture_input
+        
+        
         
     }
 
@@ -61,6 +72,33 @@ class EditMode extends React.Component{
         
         
 
+    }
+
+    handleClickCaptureImage(event)
+    {
+
+    let data=this.state.data
+        // if in capture mode
+      if(this.state.captureMode)
+      {
+              event.preventDefault()
+              data["Image"]=picture_element.current.getScreenshot()
+
+              this.setState(prevState =>
+                {
+                  return {...prevState,data:data,captureMode:false}
+                })
+      }
+
+      else
+      {
+        event.preventDefault()
+        data["Image"]='null'
+        this.setState(prevState =>
+          {
+            return {...prevState,data:data,captureMode:true}
+          })
+      }
     }
 
     render()
@@ -222,7 +260,7 @@ class EditMode extends React.Component{
                 {
                 return (
                     <div id='Image_and_Button' className='data_field'>
-                            <img src={this.state.image}  id='avatar'></img>
+                            <img src={this.state.data.Image}  id='avatar'></img>
                             <button id="Capture_Image_Button"
                             onClick={this.handleClickCaptureImage}>Retake</button>
 

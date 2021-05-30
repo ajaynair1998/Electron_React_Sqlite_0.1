@@ -249,6 +249,7 @@ ipcMain.on('Edit-Profile-View-Page',(event,args)=>
 
 // Starting ProfilePage Logic
 
+// Get existing data for a specific Profile
 ipcMain.on('Give-Profile-Data',(event,args) =>
 {
  
@@ -276,6 +277,52 @@ ipcMain.on('Give-Profile-Data',(event,args) =>
     }
   })
 })
+
+// Get the edited Profile Data and add it to database
+
+ipcMain.on('Edited-Profile-Data-From-React',(event,args)=>
+{
+  let Patient_id=args[0]
+  let data=args[1]
+
+  // debug
+  // console.log(Patient_id,data)
+
+  let arrayOfKeys=Object.keys(data)
+  
+  let afterProcessing=[]
+
+  arrayOfKeys.map(item =>
+    {
+      if(data[item] !== null)
+      {
+        afterProcessing.push(item +"=" + "'" + data[item] + "'")
+      }
+    })
+  
+  // string form to make into sql
+  afterProcessing = afterProcessing.toString()
+
+
+  let queryToEditProfile =`UPDATE Patient_Data SET ${afterProcessing} WHERE Patient_id=${Patient_id}`
+
+  database.all(queryToEditProfile,(err,rows) =>
+      {
+        if(err)
+        {
+          console.log(err.message)
+        }
+        else
+        {
+          // alert in main window
+          dialog.showMessageBox({message:'Patient Profile Edited Successfully!',button:['Okay'],
+          title:"SUCCESS!"})
+        }
+      })
+
+
+})
+
 
 
 

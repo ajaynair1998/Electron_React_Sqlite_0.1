@@ -7,6 +7,7 @@ import EditMode from './profilePageComponents/editMode'
 import '../stylesProfilePage.css'
 
 let Patient_id
+let stateDataOnMount
 
 class ProfilePage extends Component{
     constructor()
@@ -28,6 +29,12 @@ class ProfilePage extends Component{
 
         window.ipcRenderer.on('Profile-Data-From-Electron',(event,args) =>
         {
+            // Save the state data to temporary variables so it remains unchanged on view Page even when 
+            // it is being changed on edit page
+
+            // use spread operator to create a copy not a reference
+            stateDataOnMount={...args[0]}
+
             this.setState(prevState =>
                 {
                     return {...prevState,data:args[0],loaded:true}
@@ -41,7 +48,7 @@ class ProfilePage extends Component{
     {
         if(event.target.id === 'save_button')
         {
-            console.log('save pressed')
+            window.ipcRenderer.send('Edited-Profile-Data-From-React',[Patient_id,this.state.data])
         }
     }
 
@@ -77,7 +84,7 @@ class ProfilePage extends Component{
         // Helper Rendering Methods
 
         // For Control Section
-        let controlsRender=() =>
+        let controlsRender=() =>    
             {
                 // if in view Mode
                 if(this.state.mode ==='viewMode')
@@ -106,18 +113,23 @@ class ProfilePage extends Component{
         {
             if (this.state.loaded)
             {
+                // IMPORTANT !!
+
+                // Statedata  it is a REFERANCE
+                // statedataonMount is a copy 
+                let stateData=this.state.data
                     // if in viewMode
                     if(this.state.mode === 'viewMode')
                     {
                         return (
-                            <ViewMode data={this.state.data} />
+                            <ViewMode data={stateDataOnMount} />
                         )
                     }
                     // if in edit mode
                     else if(this.state.mode==='editMode')
                     {
                         return(
-                            <EditMode data={this.state.data} />
+                            <EditMode data={stateData} />
                         )
                     }
             }
