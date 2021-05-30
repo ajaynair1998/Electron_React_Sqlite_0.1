@@ -18,6 +18,7 @@ class ProfilePage extends Component{
         // handleClicks
         this.handleClickSubmit=this.handleClickSubmit.bind(this)
         this.handleClickControls=this.handleClickControls.bind(this)
+        this.handleClickCounter=this.handleClickCounter.bind(this)
     }
 
     componentDidMount()
@@ -37,7 +38,7 @@ class ProfilePage extends Component{
 
             this.setState(prevState =>
                 {
-                    return {...prevState,data:args[0],loaded:true}
+                    return {...prevState,data:args[0],loaded:true,changes:0}
                 })
         })
 
@@ -74,6 +75,15 @@ class ProfilePage extends Component{
                 })
         }
     }
+
+    handleClickCounter(event)
+    {
+        let counter=this.state.changes
+        this.setState(prevState =>
+            {
+                return {...prevState , changes: counter+1}
+            })
+    }
     
     
     render()
@@ -101,7 +111,7 @@ class ProfilePage extends Component{
                     // Render  controls if in edit mode
                     return(
                         <ControlsEditMode handleClickControls={this.handleClickControls} 
-                        handleClickSubmit={this.handleClickSubmit}/>
+                        handleClickSubmit={this.handleClickSubmit} changes={this.state['changes']}/>
                     )
                 }
                 
@@ -122,14 +132,14 @@ class ProfilePage extends Component{
                     if(this.state.mode === 'viewMode')
                     {
                         return (
-                            <ViewMode data={stateDataOnMount} />
+                            <ViewMode data={stateDataOnMount}  />
                         )
                     }
                     // if in edit mode
                     else if(this.state.mode==='editMode')
                     {
                         return(
-                            <EditMode data={stateData} />
+                            <EditMode data={stateData} handleClickCounter={this.handleClickCounter} />
                         )
                     }
             }
@@ -208,8 +218,8 @@ function ControlsViewMode(props)
         return(
             <div id='controls'>
 
-                    <h2 id='backbutton' onClick={props.handleClickControls}
-                    >  Go Back </h2>
+                    {/* <h2 id='backbutton' onClick={props.handleClickControls}
+                    >  Go Back </h2> */}
 
                     <h2 onClick={props.handleClickControls} id='changemodetoeditbutton'
                     > Change To Edit Mode </h2>
@@ -227,7 +237,7 @@ function ControlsEditMode(props)
         <div id='controls'>
                 
                     <h2 onClick={props.handleClickControls} id='backbutton'
-                    > Go Back </h2>
+                    > Unsaved Changes: {props.changes} </h2>
 
                     <h2 onClick={props.handleClickControls} id='changemodetoviewbutton'
                     > Change To View Mode </h2>

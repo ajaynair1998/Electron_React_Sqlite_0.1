@@ -58,6 +58,9 @@ class EditMode extends React.Component{
     // handleChange for dataFields
     handleChange(event)
     {
+        // to Increment unsaved changes counter
+        this.props.handleClickCounter()
+
         // Change the current data property in state when any input fields are changed
         let {id,value} =event.target
         let editedData=this.state['data']
