@@ -257,7 +257,9 @@ class ViewPage extends Component{
                 let data=this.state.data
                 let oldEntries=eval(data.Chief_Complaint)
 
-                entry=[parseInt(oldEntries.length+1),date,chiefComplaint,historyOfComplaint]
+                let maxOfOldEntries=Math.max(...oldEntries.map(item => item[0]))
+
+                entry=[parseInt(maxOfOldEntries+1),date,chiefComplaint,historyOfComplaint]
 
                 // add the new entry to first position
                 oldEntries.unshift(entry)
@@ -365,8 +367,10 @@ class ViewPage extends Component{
                 let data=this.state.data
                 let entries=eval(data.General_Examination)
 
+                let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
                 // putting current values to an array
-                let currentEntry =[entries.length+1,todaysDate,bp,temperature,oxygensaturation]
+                let currentEntry =[maxOfOldEntries+1,todaysDate,bp,temperature,oxygensaturation]
 
                 // now add this to first position in entries
                 entries.unshift(currentEntry)
@@ -462,7 +466,10 @@ class ViewPage extends Component{
                 let data=this.state.data
 
                 let entries=eval(data.Local_Examination)
-                let currentEntry = [entries.length+1,todaysDate,extraOralValue,intraOralValue]
+
+                let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                let currentEntry = [maxOfOldEntries+1,todaysDate,extraOralValue,intraOralValue]
                 
                 // add new entry to first position
                 entries.unshift(currentEntry)
@@ -545,7 +552,10 @@ class ViewPage extends Component{
                   let data=this.state.data
   
                   let entries=eval(data.Clinical_Diagnosis)
-                  let currentEntry = [entries.length+1,todaysDate,clinicalDiagnosisValue]
+
+                  let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                  let currentEntry = [maxOfOldEntries+1,todaysDate,clinicalDiagnosisValue]
                   
                   // add new entry to first position
                   entries.unshift(currentEntry)
@@ -628,7 +638,10 @@ class ViewPage extends Component{
                   let data=this.state.data
   
                   let entries=eval(data.Diagnosis)
-                  let currentEntry = [entries.length+1,todaysDate,diagnosisValue]
+
+                  let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                  let currentEntry = [maxOfOldEntries+1,todaysDate,diagnosisValue]
                   
                   // add new entry to first position
                   entries.unshift(currentEntry)
@@ -712,7 +725,10 @@ class ViewPage extends Component{
                 let data=this.state.data
 
                 let entries=eval(data.Treatment_Plan)
-                let currentEntry = [entries.length+1,todaysDate,treatmentPlanValue,treatmentValue]
+
+                let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                let currentEntry = [maxOfOldEntries+1,todaysDate,treatmentPlanValue,treatmentValue]
                 
                 // add new entry to first position
                 entries.unshift(currentEntry)
@@ -797,7 +813,10 @@ class ViewPage extends Component{
                 let data=this.state.data
 
                 let entries=eval(data.Medicines)
-                let currentEntry = [entries.length+1,todaysDate,medicineTypeValue,medicineValue,frequencyValue]
+
+                let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                let currentEntry = [maxOfOldEntries+1,todaysDate,medicineTypeValue,medicineValue,frequencyValue]
                 
                 // add new entry to first position
                 entries.unshift(currentEntry)
@@ -880,7 +899,10 @@ class ViewPage extends Component{
                 let data=this.state.data
 
                 let entries=eval(data.Follow_Up)
-                let currentEntry = [entries.length+1,todaysDate,followUpTextValue,followUpDateValue]
+
+                let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                let currentEntry = [maxOfOldEntries+1,todaysDate,followUpTextValue,followUpDateValue]
                 
                 // add new entry to first position
                 entries.unshift(currentEntry)
@@ -968,7 +990,10 @@ class ViewPage extends Component{
                   let data=this.state.data
   
                   let entries=eval(data.Investigation)
-                  let currentEntry = [entries.length+1,todaysDate,investigationTypeValue,investigationValue]
+
+                  let maxOfOldEntries=Math.max(...entries.map(item => item[0]))
+
+                  let currentEntry = [maxOfOldEntries+1,todaysDate,investigationTypeValue,investigationValue]
                   
                   // add new entry to first position
                   entries.unshift(currentEntry)
