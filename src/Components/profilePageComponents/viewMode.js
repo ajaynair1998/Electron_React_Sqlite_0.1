@@ -64,7 +64,7 @@ class ViewMode extends Component{
                 let image=this.state.data.Image
 
                 // Renders the image only if state contains image
-                if(image !== null && image !== '' )
+                if(image !== null && image !== '' && image !== undefined && image !== 'null')
                 {
                     return (
                         <div id='Image_and_Comment' className='data_field'>
