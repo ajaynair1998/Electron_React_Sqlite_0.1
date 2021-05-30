@@ -237,10 +237,15 @@ ipcMain.on('Edit-Profile-View-Page',(event,args)=>
         {
           console.log(err.message)
         }
+        else{
+          // alert in main window
+          dialog.showMessageBox({message:'Patient Profile Edited Successfully!',button:['Okay'],
+          title:"SUCCESS!"})
+        }
       })
 
   
-  event.reply('Reply-Editing-Profile-View-Page','done')
+ 
 })
 
 

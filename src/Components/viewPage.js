@@ -181,11 +181,7 @@ class ViewPage extends Component{
        
         window.ipcRenderer.send('Edit-Profile-View-Page',[patientId,this.state.data])
 
-        window.ipcRenderer.on('Reply-Editing-Profile-View-Page',(event,args) =>
-        {
-            console.log(args)
-        })
-
+        
     }
 
     handleClickGoTo(event){
