@@ -41,7 +41,14 @@ class Register extends Component{
 
       // setting time and date at the time of load
       let time_field=document.getElementById('Time')
-      time_field.value=`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+
+      // change time to am pm before rendering
+      let hours=date.getHours()
+      let amPm=hours >= 12 ? 'PM' : 'AM'
+      hours= hours >= 12 ? hours-12 : hours
+      
+      
+      time_field.value=`${hours}:${date.getMinutes()} ${amPm}`
 
 
       //setting date
