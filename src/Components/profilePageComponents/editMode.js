@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Webcam from 'react-webcam'
+
 class EditMode extends React.Component{
     constructor(props)
     {
@@ -17,6 +19,27 @@ class EditMode extends React.Component{
             {
                 return {...prevState,data:this.props.data,loaded:true}
             })
+        
+        
+            //Decide if we want to start in capture mode or not
+        
+        let image=this.props.data['Image']
+
+        if(image !== null && image !== '' && image !== "null")
+        {
+            this.setState(prevState =>
+                {
+                    return {...prevState,captureMode:false}
+                })
+        }
+        else
+        {
+            this.setState(prevState =>
+                {
+                    return {...prevState,captureMode:true}
+                })
+        }
+        
 
         
     }
@@ -173,12 +196,48 @@ class EditMode extends React.Component{
 
          }
 
+        let imageFieldRender =() =>
+        {
+             // if in capture mode
+             if(this.state.captureMode)
+                {
+                return(
+                    <div id='Image_and_Button' className='data_field'>
+                            <Webcam id='avatar'
+                                audio={false}
+                                height={720}
+                                ref={this.picture_input}
+                                screenshotFormat="image/jpeg"
+                                width={1280}
+                            
+                            />
+                            <button id="Capture_Image_Button"
+                            onClick={this.handleClickCaptureImage}>Capture</button>
+
+                            </div>
+                )
+                }
+            // if not in capture mode
+            else if(this.state.captureMode === false)
+                {
+                return (
+                    <div id='Image_and_Button' className='data_field'>
+                            <img src={this.state.image}  id='avatar'></img>
+                            <button id="Capture_Image_Button"
+                            onClick={this.handleClickCaptureImage}>Retake</button>
+
+                            </div>
+                )
+
+                }
+        }
+
 
         return(
             <div id='mainContainerEditMode'>
                 {/* contain the image */}
                 <div id='imageContainerEditMode'>
-                        {/* {imageFieldRender()} */}
+                        {imageFieldRender()}
                 </div>
                 <div id='contentContainer'>
                     {/* contents contains the data fields */}

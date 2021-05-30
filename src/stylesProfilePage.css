@@ -197,3 +197,81 @@
 
 
  /* Styling view mode done */
+
+ /* starting styling edit mode */
+
+ #Profile #mainContainerEditMode{
+  background:#000;
+  background:linear-gradient(to right,#000,rgb(37, 36, 36));
+  height:1900px;
+  color: white;
+  padding-top:50px;
+}
+
+#Profile #mainContainerEditMode #contentContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background-color: aliceblue; */
+  padding-top: 100px;
+}
+
+#Profile #mainContainerEditMode #contentContainer #contents{
+
+  /* position: relative;
+  top:90px; */
+  /* background-color: rgb(62, 197, 118); */
+  display: grid;
+  grid-template-columns:  1fr 1fr ;
+  justify-items: left;
+  align-content: space-between;
+  column-gap: 400px;
+  row-gap: 28px;
+  /* background-color: aqua; */
+  
+  }
+
+#Profile #mainContainerEditMode #contentContainer #contents .data_field
+{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+#Profile #imageContainerEditMode{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+ #Profile #imageContainerEditMode #Image_and_Button{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:20px;
+ }
+
+ #Profile #imageContainerEditMode #Image_and_Button #avatar{
+    width: 380px;
+    height: 285px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 285px;
+    background-color: rgb(31, 34, 34);
+ }
+
+ #Profile #mainContainerEditMode #contentContainer #contents .data_field input{
+  border-radius: 5px;
+  padding-left: 3px;
+  height:3em;
+}
+
+#Profile #mainContainerEditMode #contentContainer #contents .data_field select{
+  border-radius: 5px;
+  padding-left: 3px;
+  height:3em;
+}
+
