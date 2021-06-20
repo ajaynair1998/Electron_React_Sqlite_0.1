@@ -330,7 +330,39 @@ ipcMain.on('Edited-Profile-Data-From-React',(event,args)=>
 
 
 
+//Delete the profile
+ipcMain.on('Delete-Profile',(event,args)=>
+{
+  // get the patient id from arguments
+  let patient_id=args[0]
+  let patientName=args[1]
+  console.log(patient_id)
 
+  // query to delete a row
+  let queryToDelete=`DELETE FROM Patient_Data WHERE Patient_id=${patient_id}`
+
+  database.all(queryToDelete,(err,rows)=>
+  {
+    if(err)
+    {
+      // alert error in message box
+      dialog.showMessageBox({message:`${err.message}`,button:['Okay'],title:"ERROR!"})
+
+
+    }
+    else
+    {
+      // if Successfully Deleted
+      dialog.showMessageBox({message:`Profile ${patientName} with id ${patient_id} 
+      has been deleted`,button:['Okay'],title:"SUCCESS!"})
+    }
+  })
+
+
+
+
+
+}) 
 
 
 

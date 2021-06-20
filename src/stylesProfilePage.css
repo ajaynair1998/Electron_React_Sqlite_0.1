@@ -282,3 +282,78 @@
 }
 
 
+#Profile #controls #delete_button{
+    padding:9px;
+    border-radius: 5px;
+    background-image: linear-gradient(to right,rgb(228, 32, 32),rgb(194, 10, 10));
+    color:white;
+}
+
+#Profile #controls #delete_button:hover{
+  color:black;
+}
+
+#Profile #controls #save_button:hover{
+  color:black;
+}
+
+#Profile #Main_Container_Delete_Mode {
+  background:linear-gradient(to right,#000,rgb(37, 36, 36));
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container{
+  display: flex;
+  flex-direction: column;
+  gap:50px;
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .infodeletemode{
+  color: white;
+}
+
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction button{
+  height:50px;
+  width:80px;
+  border-color: white;
+  border-radius: 5px;
+  border-width: 0px;
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbutton{
+  background-image: linear-gradient(to right,rgb(172, 55, 55),rgb(194, 10, 10));
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .nobutton
+{
+  background-image: linear-gradient(to right,rgb(65, 158, 80),rgb(25, 243, 54));
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbuttonlink
+{
+  text-decoration: none!important;
+  color:black;
+}
+
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbutton :hover{
+  color:white;
+  
+  
+}
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .nobutton:hover{
+  color:white;
+  cursor:-webkit-grab;
+}
