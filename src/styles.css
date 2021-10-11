@@ -97,18 +97,14 @@
   transition: all 0.3s ease;
 }
 
-#Homepage #contents{
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
-  height:820px;
-  
-  
-  
-  
+#Homepage #contents {
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
+  height: 820px;
 }
 
-#Homepage #options{
-  background:transparent;
+#Homepage #options {
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,31 +114,26 @@
   height: 500px;
   position: relative;
   top: 20%;
-  
-  
-  
 }
 
-#options ul{
+#options ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   list-style: none;
 }
 
-.option_links{
-  
+.option_links {
   margin: 20px auto;
-  width:400px;
-  height:70px;
+  width: 400px;
+  height: 70px;
   font-size: 30px;
-
 }
 
-.option_links:hover{
+.option_links:hover {
   /* height:72px; */
   font-size: 31px;
-  width:405px;
+  width: 405px;
   transition: all 0.2s ease;
 }
 
@@ -152,14 +143,7 @@
 
 /* Home page Styling Done */
 
-
-
-
-
 /* ------------------------------------------------------ */
-
-
-
 
 /* Styling Register Page */
 
@@ -254,13 +238,11 @@
   transition: all 0.3s ease;
 }
 
-#Register #contents{
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
-  height:1900px;
+#Register #contents {
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
+  height: 1900px;
   color: white;
-  
-  
 }
 
 #Register h1 {
@@ -280,98 +262,86 @@
   font-size: 2.5rem;
 }
 
-#Register .form-header{
+#Register .form-header {
   /* background-color: wheat; */
   /* position: relative;
   top:50px; */
   padding-top: 20px;
 }
 
-#Register .form-container{
+#Register .form-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
 }
 
-#Register .form-body{
-
-  position:relative;
-  top:70px;
+#Register .form-body {
+  position: relative;
+  top: 70px;
   /* background-color: rgb(62, 197, 118); */
   display: grid;
-  grid-template-columns:  1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   justify-items: left;
   align-content: space-between;
   column-gap: 400px;
   row-gap: 28px;
-  
-  }
+}
 
-#Register .data_field{
-  
+#Register .data_field {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 3px;
-  max-width:300px;
-  margin:20px ;
+  max-width: 300px;
+  margin: 20px;
   /* background-color: yellowgreen; */
-  
-  
-  
 }
 
-#Register .data_field input{
+#Register .data_field input {
   border-radius: 5px;
   padding-left: 3px;
-  height:3em;
+  height: 3em;
 }
 
-#Register .data_field select{
+#Register .data_field select {
   border-radius: 5px;
   padding-left: 3px;
-  height:3em;
+  height: 3em;
 }
-#Register #Picture_Container{
-  display:flex;
+#Register #Picture_Container {
+  display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
-
-#Register #Picture_Container #Image_and_Button{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:30px;
+#Register #Picture_Container #Image_and_Button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-
-#Register #Picture_Container #Image_and_Button #Capture_Image_Button{
-  height:50px;
-  width:150px;
-
-
+#Register #Picture_Container #Image_and_Button #Capture_Image_Button {
+  height: 50px;
+  width: 150px;
 }
 
-#Register #avatar{
+#Register #avatar {
   width: 380px;
   height: 285px;
   border-radius: 50%;
 }
 
-#Register .form-footer{
+#Register .form-footer {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin-top: 150px;
-  height:50px;
+  height: 50px;
 }
 
-#Register .form-footer button{
-
+#Register .form-footer button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -390,20 +360,17 @@
   font-size: large;
 }
 
-#Register .form-footer button:hover{
-  width:19.5%;
-  transition:all 0.5s ease;
+#Register .form-footer button:hover {
+  width: 19.5%;
+  transition: all 0.5s ease;
   cursor: grab;
 }
-
-
 
 /* Register Page styling done */
 
 /* --------------------------------------------------- */
 
 /* Records page styling */
-
 
 #Records .navbar__container {
   display: flex;
@@ -496,112 +463,101 @@
   transition: all 0.3s ease;
 }
 
-
 #Records #controls_and_records {
-  position:fixed;
-  top:8vh;
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
-  height:92vh;
-  width:100%;
-  display:grid;
+  position: fixed;
+  top: 8vh;
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
+  height: 92vh;
+  width: 100%;
+  display: grid;
   grid-template-areas:
-  'a b b b b b'
-  'a b b b b b'
-  'a b b b b b'
-  'a b b b b b'
-  'a b b b b b';
+    "a b b b b b"
+    "a b b b b b"
+    "a b b b b b"
+    "a b b b b b"
+    "a b b b b b";
 }
 
-#Records #controls{
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
+#Records #controls {
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
   grid-area: a;
-
 }
 /* for the react -router link element */
-#Records #chart .patient a{
-  text-decoration: none!important;
+#Records #chart .patient a {
+  text-decoration: none !important;
   color: black;
 }
 
-#Records #chart{
-  grid-area:b;
+#Records #chart {
+  grid-area: b;
   margin-top: 70px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap:30px;
-  height:85%;
+  gap: 30px;
+  height: 85%;
   overflow-y: scroll;
 }
 
-#Records .patient{
-  width:90%;
-  height:40px;
+#Records .patient {
+  width: 90%;
+  height: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  gap:100px;
+  gap: 100px;
   color: #fff;
   border-style: solid;
   border-color: white;
   border-radius: 8px;
   border-width: 2px;
-  
 }
 
-#Records .patient .name{
-  width:20%;
+#Records .patient .name {
+  width: 20%;
 }
-#Records .patient .patient_id{
-  width:5%;
-}
-
-#chart .patient .patient_button button{
-  padding:5px;
+#Records .patient .patient_id {
+  width: 5%;
 }
 
-#Records #controls{
-  display:flex;
+#chart .patient .patient_button button {
+  padding: 5px;
+}
+
+#Records #controls {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 80px;
-
-
-
 }
 
-#Records #controls #screen{
+#Records #controls #screen {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap:25px;
-
+  gap: 25px;
 }
 
-
-#Records #controls #keyword{
+#Records #controls #keyword {
   margin-top: 30px;
 }
 
-#Records #controls #screen button{
-  width:30%;
-  padding:5px;
+#Records #controls #screen button {
+  width: 30%;
+  padding: 5px;
 }
 
-#Records #controls #screen #all{
-  padding:5px 20px;
+#Records #controls #screen #all {
+  padding: 5px 20px;
 }
 
-
-#Records #controls input{
-  height:45px;
-  padding:20px;
+#Records #controls input {
+  height: 45px;
+  padding: 20px;
   border-radius: 5px;
 }
-
-

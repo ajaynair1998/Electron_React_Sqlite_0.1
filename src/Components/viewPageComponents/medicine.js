@@ -1,38 +1,32 @@
-import React from 'react'
+import React from "react";
 
-function Medicine(props)
-{
-    return(
-        <div className='single_entry'>
-                            <div className='labels'>
-                                <p>{props.medicinetype}</p>
-                                    
+function Medicine(props) {
+  return (
+    <div className="single_entry">
+      <div className="labels">
+        <p>{props.medicinetype}</p>
+      </div>
+      <div className="input_rows">
+        <p>{props.medicine}</p>
+      </div>
 
-                            </div>
-                            <div className='input_rows'>
-                                <p>{props.medicine}</p>
+      <div className="frequency">{props.frequency}</div>
 
-                            </div>
-                            
-                            <div className='frequency'>
-                                {props.frequency}
-                            </div>
-                            
-                            <div className='date'>
-                                <p>{props.date}</p>
+      <div className="date">
+        <p>{props.date}</p>
+      </div>
 
-                            </div>
-                            
-                            <div className="delete_button">
-                                <button id='delete_button_medicine'
-                                onClick={props.handleClickMedicine} 
-                                className={props.index}>Delete</button>
-
-                            </div>
-                            
-
-                        </div>
-    )
+      <div className="delete_button">
+        <button
+          id="delete_button_medicine"
+          onClick={props.handleClickMedicine}
+          className={props.index}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default Medicine
+export default Medicine;

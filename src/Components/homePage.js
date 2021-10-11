@@ -1,10 +1,10 @@
-import React, { Component } from "react"
-import {Link} from 'react-router-dom'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Homepage extends Component {
   constructor() {
-    super()
-    this.state = {}
+    super();
+    this.state = {};
   }
 
   render() {
@@ -21,7 +21,7 @@ class Homepage extends Component {
             </div>
             <ul className="navbar__menu">
               <li className="navbar__item">
-                <Link to="/" className="navbar__links" id="home-page" >
+                <Link to="/" className="navbar__links" id="home-page">
                   Home
                 </Link>
               </li>
@@ -62,13 +62,12 @@ class Homepage extends Component {
                   Records
                 </Link>
               </li>
-              
             </ul>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Homepage
+export default Homepage;

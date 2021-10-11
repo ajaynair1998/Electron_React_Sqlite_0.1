@@ -1,304 +1,290 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Kumbh Sans", sans-serif;
-    scroll-behavior: smooth;
- }
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Kumbh Sans", sans-serif;
+  scroll-behavior: smooth;
+}
 
 #Profile .navbar__container {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 50px;
-  }
-  
-  #Profile .navbar {
-    background: #131313;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  #Profile #navbar__logo {
-    background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-  }
-  
-  #Profile .navbar__menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-  }
-  
-  #Profile .navbar__item {
-    height: 80px;
-  }
-  
-  #Profile .navbar__links {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    text-decoration: none;
-    height: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  #Profile .navbar__btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-    width: 100%;
-  }
-  
-  #Profile .navbar__links:hover {
-    color: #9518fc;
-    transition: all 0.3s ease;
-  }
-  
-  #Profile .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 20px;
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    background: #833ab4;
-    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
-    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
-    color: #fff;
-    transition: all 0.3s ease;
-  }
-
-
-
-  /* Controls Section */
-
-
-  /* in View Mode */
-
-  #Profile #controls{
-    background-color: #131313;
-    padding: 30px;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    color: white;
-    
-    
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 50px;
 }
 
-#Profile #controls h2:hover{
-    color: rgb(200, 81, 81);
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
-    
+#Profile .navbar {
+  background: #131313;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-#Profile #controls #save_button{
-    padding:9px;
-    border-radius: 5px;
-    background-image: linear-gradient(to top,rgb(48, 224, 48),rgb(0, 245, 53))
+#Profile #navbar__logo {
+  background-color: #ff8177;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
 }
 
+#Profile .navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+#Profile .navbar__item {
+  height: 80px;
+}
+
+#Profile .navbar__links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  text-decoration: none;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+#Profile .navbar__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+#Profile .navbar__links:hover {
+  color: #9518fc;
+  transition: all 0.3s ease;
+}
+
+#Profile .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #833ab4;
+  background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+  background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Controls Section */
+
+/* in View Mode */
+
+#Profile #controls {
+  background-color: #131313;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: white;
+}
+
+#Profile #controls h2:hover {
+  color: rgb(200, 81, 81);
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+#Profile #controls #save_button {
+  padding: 9px;
+  border-radius: 5px;
+  background-image: linear-gradient(to top, rgb(48, 224, 48), rgb(0, 245, 53));
+}
 
 /* Main Section  of view Mode*/
-#Profile #mainContainerViewMode{
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
-  height:1900px;
+#Profile #mainContainerViewMode {
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
+  height: 1900px;
   color: white;
-  padding-top:50px;
+  padding-top: 50px;
 }
 
-#Profile #mainContainerViewMode #contentContainer{
-  display:flex;
+#Profile #mainContainerViewMode #contentContainer {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   /* background-color: aliceblue; */
   padding-top: 100px;
 }
 
-#Profile #mainContainerViewMode #contentContainer #contents{
-
+#Profile #mainContainerViewMode #contentContainer #contents {
   /* position: relative;
   top:90px; */
   /* background-color: rgb(62, 197, 118); */
   display: grid;
-  grid-template-columns:  1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   justify-items: left;
   align-content: space-between;
   column-gap: 400px;
   row-gap: 28px;
   /* background-color: aqua; */
-  
-  }
+}
 
-#Profile #mainContainerViewMode #contentContainer #contents .data_field
-{
+#Profile #mainContainerViewMode #contentContainer #contents .data_field {
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 }
 
-#Profile #imageContainerViewMode{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap:30px;
+#Profile #imageContainerViewMode {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
- #Profile #imageContainerViewMode #Image_and_Comment{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap:20px;
- }
+#Profile #imageContainerViewMode #Image_and_Comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
- #Profile #imageContainerViewMode #Image_and_Comment #avatar{
-    width: 380px;
-    height: 285px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 285px;
-    background-color: rgb(31, 34, 34);
- }
+#Profile #imageContainerViewMode #Image_and_Comment #avatar {
+  width: 380px;
+  height: 285px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 285px;
+  background-color: rgb(31, 34, 34);
+}
 
+/* Styling view mode done */
 
- /* Styling view mode done */
+/* starting styling edit mode */
 
- /* starting styling edit mode */
-
- #Profile #mainContainerEditMode{
-  background:#000;
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
-  height:1900px;
+#Profile #mainContainerEditMode {
+  background: #000;
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
+  height: 1900px;
   color: white;
-  padding-top:50px;
+  padding-top: 50px;
 }
 
-#Profile #mainContainerEditMode #contentContainer{
-  display:flex;
+#Profile #mainContainerEditMode #contentContainer {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   /* background-color: aliceblue; */
   padding-top: 100px;
 }
 
-#Profile #mainContainerEditMode #contentContainer #contents{
-
+#Profile #mainContainerEditMode #contentContainer #contents {
   /* position: relative;
   top:90px; */
   /* background-color: rgb(62, 197, 118); */
   display: grid;
-  grid-template-columns:  1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   justify-items: left;
   align-content: space-between;
   column-gap: 400px;
   row-gap: 28px;
   /* background-color: aqua; */
-  
-  }
+}
 
-#Profile #mainContainerEditMode #contentContainer #contents .data_field
-{
+#Profile #mainContainerEditMode #contentContainer #contents .data_field {
   display: flex;
   flex-direction: column;
-  gap:10px;
+  gap: 10px;
 }
 
-#Profile #imageContainerEditMode{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap:30px;
+#Profile #imageContainerEditMode {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
- #Profile #imageContainerEditMode #Image_and_Button{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap:20px;
- }
+#Profile #imageContainerEditMode #Image_and_Button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
- #Profile #imageContainerEditMode #Image_and_Button #avatar{
-    width: 380px;
-    height: 285px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 285px;
-    background-color: rgb(31, 34, 34);
- }
+#Profile #imageContainerEditMode #Image_and_Button #avatar {
+  width: 380px;
+  height: 285px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 285px;
+  background-color: rgb(31, 34, 34);
+}
 
- #Profile #mainContainerEditMode #contentContainer #contents .data_field input{
+#Profile #mainContainerEditMode #contentContainer #contents .data_field input {
   border-radius: 5px;
   padding-left: 3px;
-  height:3em;
+  height: 3em;
 }
 
-#Profile #mainContainerEditMode #contentContainer #contents .data_field select{
+#Profile #mainContainerEditMode #contentContainer #contents .data_field select {
   border-radius: 5px;
   padding-left: 3px;
-  height:3em;
+  height: 3em;
 }
 
-#Profile #imageContainerEditMode #Image_and_Button #Capture_Image_Button{
-  height:50px;
-  width:150px;
-
-
+#Profile #imageContainerEditMode #Image_and_Button #Capture_Image_Button {
+  height: 50px;
+  width: 150px;
 }
 
-
-#Profile #controls #delete_button{
-    padding:9px;
-    border-radius: 5px;
-    background-image: linear-gradient(to right,rgb(228, 32, 32),rgb(194, 10, 10));
-    color:white;
+#Profile #controls #delete_button {
+  padding: 9px;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to right,
+    rgb(228, 32, 32),
+    rgb(194, 10, 10)
+  );
+  color: white;
 }
 
-#Profile #controls #delete_button:hover{
-  color:black;
+#Profile #controls #delete_button:hover {
+  color: black;
 }
 
-#Profile #controls #save_button:hover{
-  color:black;
+#Profile #controls #save_button:hover {
+  color: black;
 }
 
 #Profile #Main_Container_Delete_Mode {
-  background:linear-gradient(to right,#000,rgb(37, 36, 36));
+  background: linear-gradient(to right, #000, rgb(37, 36, 36));
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -306,54 +292,81 @@
   justify-content: center;
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container{
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container {
   display: flex;
   flex-direction: column;
-  gap:50px;
+  gap: 50px;
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .infodeletemode{
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .infodeletemode {
   color: white;
 }
 
-
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction{
+#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction button{
-  height:50px;
-  width:80px;
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  button {
+  height: 50px;
+  width: 80px;
   border-color: white;
   border-radius: 5px;
   border-width: 0px;
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbutton{
-  background-image: linear-gradient(to right,rgb(172, 55, 55),rgb(194, 10, 10));
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  .yesbutton {
+  background-image: linear-gradient(
+    to right,
+    rgb(172, 55, 55),
+    rgb(194, 10, 10)
+  );
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .nobutton
-{
-  background-image: linear-gradient(to right,rgb(65, 158, 80),rgb(25, 243, 54));
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  .nobutton {
+  background-image: linear-gradient(
+    to right,
+    rgb(65, 158, 80),
+    rgb(25, 243, 54)
+  );
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbuttonlink
-{
-  text-decoration: none!important;
-  color:black;
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  .yesbuttonlink {
+  text-decoration: none !important;
+  color: black;
 }
 
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .yesbutton :hover{
-  color:white;
-  
-  
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  .yesbutton
+  :hover {
+  color: white;
 }
-#Profile #Main_Container_Delete_Mode #Delete_Mode_Container .deletemodeaction .nobutton:hover{
-  color:white;
-  cursor:-webkit-grab;
+#Profile
+  #Main_Container_Delete_Mode
+  #Delete_Mode_Container
+  .deletemodeaction
+  .nobutton:hover {
+  color: white;
+  cursor: -webkit-grab;
 }
