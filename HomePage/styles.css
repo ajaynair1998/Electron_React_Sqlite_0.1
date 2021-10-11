@@ -1,29 +1,24 @@
 * {
   margin: 0px;
   box-sizing: border-box;
-  
 }
 
-
-.top-container{
-    height:100vh;
+.top-container {
+  height: 100vh;
 }
 
-
-
-.path-to-actions{
-    height:100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.path-to-actions {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.path-button{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap:10vh;
-    width:19vw!important;
-
+.path-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10vh;
+  width: 19vw !important;
 }

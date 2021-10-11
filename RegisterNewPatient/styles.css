@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   margin: 0;
-
 }
 .top-container {
   height: 100vh;
@@ -12,29 +11,24 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
- height: 200vh;
-  
+  height: 200vh;
 }
 
-.heading{
-    text-align: center;
-
-}
-.profile-picture-and-button{
-    position: relative;
-    top:5vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 3vh;
+.profile-picture-and-button {
+  position: relative;
+  top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 3vh;
 }
 
-.capture-button{
-    margin:0 30%;
-}
+/* .capture-button {
+  max-width: 30vw;
+} */
 
-.patient-details{
-    color:white;
-    position: relative;
-    top: 25vh;
+.patient-details {
+  color: white;
+  position: relative;
+  top: 25vh;
 }
