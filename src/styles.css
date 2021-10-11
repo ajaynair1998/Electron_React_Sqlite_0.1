@@ -1,144 +1,20 @@
-/* Styling for Homepage */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: "Kumbh Sans", sans-serif;
-  scroll-behavior: smooth;
-}
-#Homepage .navbar__container {
-  display: flex;
-  justify-content: space-between;
-  height: 80px;
-  z-index: 1;
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 50px;
+#Homepage {
+  height: 100vh;
 }
 
-#Homepage .navbar {
-  background: #131313;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-#Homepage #navbar__logo {
-  background-color: #ff8177;
-  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-  background-size: 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-}
-
-#Homepage .navbar__menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-#Homepage .navbar__item {
-  height: 80px;
-}
-
-#Homepage .navbar__links {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 125px;
-  text-decoration: none;
-  height: 100%;
-  transition: all 0.3s ease;
-}
-
-#Homepage .navbar__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 1rem;
-  width: 100%;
-}
-
-#Homepage .navbar__links:hover {
-  color: #9518fc;
-  transition: all 0.3s ease;
-}
-
-#Homepage .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  padding: 10px 20px;
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  background: #833ab4;
-  background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
-  background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-#Homepage #contents {
-  background: #000;
-  background: linear-gradient(to right, #000, rgb(37, 36, 36));
-  height: 820px;
-}
-
-#Homepage #options {
-  background: transparent;
+#Homepage .contents {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 600px;
-  justify-content: space-around;
-  margin: 0 auto;
-  height: 500px;
+  justify-content: center;
+}
+
+#Homepage .options {
   position: relative;
-  top: 20%;
-}
-
-#options ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  list-style: none;
-}
-
-.option_links {
-  margin: 20px auto;
-  width: 400px;
-  height: 70px;
-  font-size: 30px;
-}
-
-.option_links:hover {
-  /* height:72px; */
-  font-size: 31px;
-  width: 405px;
-  transition: all 0.2s ease;
-}
-
-#Homepage h1 {
-  color: rgb(55, 199, 67);
+  align-items: center;
+  justify-content: space-between;
+  gap: 20vh;
 }
 
 /* Home page Styling Done */

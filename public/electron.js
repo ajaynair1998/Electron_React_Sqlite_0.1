@@ -31,6 +31,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: false,
       webSecurity: false,
+      devTools: true,
     },
   });
   mainWindow.loadURL(

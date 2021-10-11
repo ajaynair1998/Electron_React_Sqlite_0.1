@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.top-container{
+    height:100vh;
+}
+
+
+
+.path-to-actions{
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.path-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap:10vh;
+    width:19vw!important;
+
+}
