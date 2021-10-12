@@ -1,0 +1,9 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+
+.data-container{
+    display: flex;
+    height:90vh;
+}
