@@ -1,187 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="top-container">
-      <section class="navbar">
-        <nav>
-          <div class="nav-wrapper pink darken-1">
-            <a href="#" class="brand-logo">
-              <a to="/" id="brand-logo">
-                <span> <b>&nbsp;&nbsp;Patient Database</b></span>
-              </a>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li>
-                <a to="/" className="navbar__links" id="home-page"> Home </a>
-              </li>
-              <li>
-                <a to="/Register" className="navbar__links" id="about-page">
-                  Register
-                </a>
-              </li>
-              <li>
-                <a
-                  to="/Records"
-                  className="navbar__links"
-                  id="services-page"
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </section>
-      <section class="patient-detail-section">
-        <section class="profile-picture-and-button">
-          <img
-            src="images/download.jpeg"
-            alt=""
-            class="capture-photo responsive-image circle"
-          />
+        <section class="navbar">
+            <nav>
+                <div class="nav-wrapper pink darken-1">
+                    <a href="#" class="brand-logo">
+                        <a to="/" id="brand-logo">
+                            <span> <b>&nbsp;&nbsp;Patient Database</b></span>
+                        </a>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a to="/" className="navbar__links" id="home-page"> Home </a>
+                        </li>
+                        <li>
+                            <a to="/Register" className="navbar__links" id="about-page">
+                                Register
+                            </a>
+                        </li>
+                        <li>
+                            <a to="/Records" className="navbar__links" id="services-page"></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <section class="patient-detail-section">
+            <section class="profile-picture-and-button">
+                <img src="images/download.jpeg" alt="" class="capture-photo responsive-image circle" />
 
-          <a
-            class="
+                <a class="
               waves-effect waves-light
               pink
               darken-1
               btn-large
               capture-button
-            "
-            >Capture</a
-          >
-        </section>
-        <section class="patient-details container">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Date" type="date" class="validate" />
-                <label class="active" for="Date">Date</label>
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Time" type="time" class="validate" />
-                <label class="active" for="Time">Time</label>
-              </div>
-            </div>
+            ">Capture</a>
+            </section>
+            <section class="patient-details container">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Date" type="date" class="validate" />
+                            <label class="active" for="Date">Date</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Time" type="time" class="validate" />
+                            <label class="active" for="Time">Time</label>
+                        </div>
+                    </div>
 
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Patient_Name" type="text" class="validate" />
-                <label class="active" for="Patient_Name">Patient Name</label>
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Nationality" type="text" class="validate" />
-                <label class="active" for="Nationality">Nationality</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Age" type="text" class="validate" />
-                <label class="active" for="Age">Age</label>
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="DOB" type="date" class="validate" />
-                <label class="active" for="DOB">Date Of Birth</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <select>
-                  <option value="Not Selected" selected>Not Selected</option>
-                  <option value="Single">Male</option>
-                  <option value="Married">Female</option>
-                  <option value="Married">Other</option>
-                </select>
-                <label>Gender</label>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Patient_Name" type="text" class="validate" />
+                            <label class="active" for="Patient_Name">Patient Name</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Nationality" type="text" class="validate" />
+                            <label class="active" for="Nationality">Nationality</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Age" type="text" class="validate" />
+                            <label class="active" for="Age">Age</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="DOB" type="text" class="datepicker" />
+                            <label class="active" for="DOB">Date Of Birth</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <select>
+                                <option value="Not Selected" selected>Not Selected</option>
+                                <option value="Single">Male</option>
+                                <option value="Married">Female</option>
+                                <option value="Married">Other</option>
+                            </select>
+                            <label>Gender</label>
 
-                [
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Address" type="text" class="validate" />
-                <label class="active" for="Address">Address</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <select id="Blood_Group">
-                  <option value="Not Selected" selected>Not Selected</option>
-                  <option value="A+">A+</option>
-                  <option value="O+">O+</option>
-                  <option value="B+">B+</option>
-                  <option value="AB+">AB+</option>
-                  <option value="A-">A-</option>
-                  <option value="O-">O-</option>
-                  <option value="B-">B-</option>
-                  <option value="AB-">AB-</option>
-                </select>
-                <label>Blood Group</label>
-                <!-- <input  id="Blood_Group" type="text" class="validate">
+                            [
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Address" type="text" class="validate" />
+                            <label class="active" for="Address">Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <select id="Blood_Group">
+                                <option value="Not Selected" selected>Not Selected</option>
+                                <option value="A+">A+</option>
+                                <option value="O+">O+</option>
+                                <option value="B+">B+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="A-">A-</option>
+                                <option value="O-">O-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                            <label>Blood Group</label>
+                            <!-- <input  id="Blood_Group" type="text" class="validate">
                             <label class="active" for="Blood_Group">Blood Group</label> -->
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Phone_Number" type="text" class="validate" />
-                <label class="active" for="Phone_Number">Phone Number</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Mobile_Number" type="text" class="validate" />
-                <label class="active" for="Mobile_Number">Mobile Number</label>
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Email" type="email" class="validate" />
-                <label class="active" for="Email">Email</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Marital_Status" type="text" class="validate" />
-                <label class="active" for="Marital_Status"
-                  >Marital Status</label
-                >
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Occupation" type="text" class="validate" />
-                <label class="active" for="Occupation">Occupation</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Doctor_Name" type="text" class="validate" />
-                <label class="active" for="Doctor_Name">Doctor Name</label>
-              </div>
-              <div class="input-field col s5 offset-s1">
-                <input id="Purpose" type="text" class="validate" />
-                <label class="active" for="Purpose">Purpose</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s5 offset-s1">
-                <input id="Referred_By" type="text" class="validate" />
-                <label class="active" for="Referred_By">Referred By</label>
-              </div>
-            </div>
-          </form>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Phone_Number" type="text" class="validate" />
+                            <label class="active" for="Phone_Number">Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Mobile_Number" type="text" class="validate" />
+                            <label class="active" for="Mobile_Number">Mobile Number</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Email" type="email" class="validate" />
+                            <label class="active" for="Email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Marital_Status" type="text" class="validate" />
+                            <label class="active" for="Marital_Status">Marital Status</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Occupation" type="text" class="validate" />
+                            <label class="active" for="Occupation">Occupation</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Doctor_Name" type="text" class="validate" />
+                            <label class="active" for="Doctor_Name">Doctor Name</label>
+                        </div>
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Purpose" type="text" class="validate" />
+                            <label class="active" for="Purpose">Purpose</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5 offset-s1">
+                            <input id="Referred_By" type="text" class="validate" />
+                            <label class="active" for="Referred_By">Referred By</label>
+                        </div>
+                    </div>
+                </form>
+            </section>
         </section>
-      </section>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll("select");
-        var instances = M.FormSelect.init(elems);
-      });
+        document.addEventListener("DOMContentLoaded", function ()
+        {
+            var elems = document.querySelectorAll("select");
+            var instances = M.FormSelect.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function ()
+        {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems);
+        });
     </script>
-  </body>
+</body>
+
 </html>
