@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Compiled and minified JavaScript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class='top-container'>
+        <section class='navbar'>
+            <nav class="nav-extended pink darken-1">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo"> &nbsp;&nbsp;Patient Database</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="sass.html">Home</a></li>
+                        <li><a href="badges.html">Records</a></li>
+
+                    </ul>
+                </div>
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab"><a href="#test1">Recent</a></li>
+                        <li class="tab"><a class="active" href="#test2">Alphabetically</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+        <section class='search-bar-and-records container '>
+
+            <div class='search-bar'>
+
+
+
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+
+                            <div class="input-field col s8 offset-s2">
+                                <i class="material-icons prefix">search</i>
+                                <input id="icon_telephone" type="tel" class="validate">
+                                <label for="icon_telephone">Search . . .</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+
+            <div class='records-container container'>
+
+                <ul class="collapsible popout pink-text" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">account_circle</i>First</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">account_circle</i>Second</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">account_circle</i>Third</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+
+
+                    </li>
+                </ul>
+
+            </div>
+
+
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function ()
+        {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

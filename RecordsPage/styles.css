@@ -1,0 +1,12 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+
+.search-bar-and-records{
+    position: relative;
+    top:5vh;
+}
+
+
+
