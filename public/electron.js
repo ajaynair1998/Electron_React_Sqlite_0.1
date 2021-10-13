@@ -26,7 +26,7 @@ function createWindow() {
   const displaySize=display.workAreaSize
 
 
-  mainWindow = new BrowserWindow({width: displaySize.width, height: displaySize.height,resizable:false,webPreferences:{preload:path.join(__dirname,'preload'),nodeIntegration: false,
+  mainWindow = new BrowserWindow({width: displaySize.width, height: displaySize.height,resizable:true,webPreferences:{preload:path.join(__dirname,'preload'),nodeIntegration: false,
   contextIsolation: false,
   webSecurity:false,
   }});

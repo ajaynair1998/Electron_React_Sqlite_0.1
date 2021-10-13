@@ -1,0 +1,12 @@
+.img-home {
+  mix-blend-mode: multiply;
+  /* background-color: #b6b6ce; */
+  opacity: 0.1;
+  -webkit-filter: blur(50px);
+  -moz-filter: blur(50px);
+  -o-filter: blur(50px);
+  -ms-filter: blur(50px);
+  filter: blur(50px);
+}
+
+
